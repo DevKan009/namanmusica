@@ -1,0 +1,13 @@
+{
+  "name": "esme-ray-official",
+  "version": "1.0.0",
+  "description": "Esme Ray official artist landing page",
+  "scripts": {
+    "start": "npx -y serve . -p 3000",
+    "dev": "npx -y serve . -p 3000",
+    "serve": "npx -y serve ."
+  },
+  "keywords": ["esme-ray", "music", "landing-page"],
+  "author": "Esme Ray",
+  "license": "MIT"
+}

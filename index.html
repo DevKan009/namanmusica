@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esme Ray — Official site</title>
+  <meta name="description" content="Esme Ray official website. Live-room vocals, late-night guitars and songs written for the last train home. Listen to new single Static Hearts, explore the visual eras, and get tour updates.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23FF5B4A'/><circle cx='50' cy='50' r='18' fill='%230B0A09'/><circle cx='50' cy='50' r='6' fill='%23FF5B4A'/></svg>">
+  
+  <!-- Google Fonts: Archivo, Instrument Serif, Mr Dafoe -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&family=Mr+Dafoe&display=swap">
+  
+  <link rel="stylesheet" href="./styles.css?v=2">
+</head>
+<body>
+
+  <!-- ======================================================================
+       HERO SECTION
+       ====================================================================== -->
+  <header id="top" style="position: relative; min-height: 860px; overflow: hidden; display: flex; flex-direction: column; background: #0B0A09">
+
+    
+    <!-- Film Grain Texture Overlay -->
+    <svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; opacity: .09; pointer-events: none">
+      <filter id="grainA">
+        <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grainA)"></rect>
+    </svg>
+
+    <!-- Main Navigation Bar -->
+    <nav aria-label="Main" style="position: relative; z-index: 3; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; padding: 28px clamp(20px, 4vw, 56px)">
+      <!-- Desktop Links -->
+      <div class="nav-links xc" style="display: flex; gap: 36px; font-size: 13px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase">
+        <a href="#music">Music</a>
+        <a href="#visuals">Visuals</a>
+        <a href="#tour">Tour</a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="menu-btn" class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" style="width: 44px; height: 44px; justify-self: start; border-radius: 50%; border: 1px solid rgba(243,238,232,.3); background: rgba(11,10,9,.4); color: #F3EEE8; cursor: pointer; padding: 0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 9h16M4 15h16"></path>
+        </svg>
+      </button>
+
+      <!-- Center Brand Logo -->
+      <a href="#top" aria-label="Esme Ray, home" style="display: flex; flex-direction: column; align-items: center; line-height: 1; color: #F3EEE8">
+        <span class="script" style="font-size: 44px; line-height: .62; color: var(--accent, #FF5B4A)">Esme</span>
+        <span class="x" style="font-size: 26px; font-weight: 900; letter-spacing: .16em; margin-right: -.16em">RAY</span>
+      </a>
+
+      <!-- Right Actions: Accent Color Theme Selector, Socials & Tickets CTA -->
+      <div style="display: flex; justify-content: flex-end; align-items: center; gap: 20px">
+        <!-- Accent Theme Color Picker Pill -->
+        <div class="theme-picker" title="Switch Accent Theme">
+          <button class="theme-dot active" data-theme-name="coral" style="background:#FF5B4A" aria-label="Coral theme"></button>
+          <button class="theme-dot" data-theme-name="lime" style="background:#E4FF3C" aria-label="Lime theme"></button>
+          <button class="theme-dot" data-theme-name="pink" style="background:#FF5FA8" aria-label="Pink theme"></button>
+          <button class="theme-dot" data-theme-name="amber" style="background:#F5B640" aria-label="Amber theme"></button>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div class="nav-social" style="display: flex; align-items: center; gap: 4px">
+          <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" aria-label="Spotify" style="width: 40px; height: 44px; display: inline-flex; align-items: center; justify-content: center">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12s12-5.4 12-12S18.66 0 12 0m5.521 17.34c-.24.359-.66.48-1.021.24c-2.82-1.74-6.36-2.101-10.561-1.141c-.418.122-.779-.179-.899-.539c-.12-.421.18-.78.54-.9c4.56-1.021 8.520-.6 11.64 1.32c.42.18.479.659.301 1.020m1.44-3.3c-.301.42-.841.6-1.262.3c-3.239-1.98-8.159-2.58-11.939-1.38c-.479.12-1.020-.12-1.14-.6s.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2m.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721c-.18-.601.18-1.2.72-1.381c4.26-1.26 11.28-1.020 15.721 1.621c.539.3.719 1.020.419 1.56c-.299.421-1.020.599-1.559.3"></path>
+            </svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="width: 40px; height: 44px; display: inline-flex; align-items: center; justify-content: center">
+            <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M7.03.084c-1.277.06-2.149.264-2.91.563a5.9 5.9 0 0 0-2.124 1.388a5.9 5.9 0 0 0-1.38 2.127C.321 4.926.12 5.8.064 7.076s-.069 1.688-.063 4.947s.021 3.667.083 4.947c.061 1.277.264 2.149.563 2.911c.308.789.72 1.457 1.388 2.123a5.9 5.9 0 0 0 2.129 1.38c.763.295 1.636.496 2.913.552c1.278.056 1.689.069 4.947.063s3.668-.021 4.947-.082c1.28-.06 2.147-.265 2.91-.563a5.9 5.9 0 0 0 2.123-1.388a5.9 5.9 0 0 0 1.38-2.129c.295-.763.496-1.636.551-2.912c.056-1.28.07-1.69.063-4.948c-.006-3.258-.02-3.667-.081-4.947c-.06-1.28-.264-2.148-.564-2.911a5.9 5.9 0 0 0-1.387-2.123a5.9 5.9 0 0 0-2.128-1.38c-.764-.294-1.636-.496-2.914-.55C15.647.009 15.236-.006 11.977 0S8.31.021 7.03.084m.14 21.693c-1.17-.05-1.805-.245-2.228-.408a3.7 3.7 0 0 1-1.382-.895a3.7 3.7 0 0 1-.9-1.378c-.165-.423-.363-1.058-.417-2.228c-.06-1.264-.072-1.644-.08-4.848c-.006-3.204.006-3.583.061-4.848c.05-1.169.246-1.805.408-2.228c.216-.561.477-.96.895-1.382a3.7 3.7 0 0 1 1.379-.9c.423-.165 1.057-.361 2.227-.417c1.265-.06 1.644-.072 4.848-.08c3.203-.006 3.583.006 4.85.062c1.168.05 1.804.244 2.227.408c.56.216.96.475 1.382.895s.681.817.9 1.378c.165.422.362 1.056.417 2.227c.06 1.265.074 1.645.08 4.848c.005 3.203-.006 3.583-.061 4.848c-.051 1.17-.245 1.805-.408 2.23c-.216.56-.477.96-.896 1.38a3.7 3.7 0 0 1-1.378.9c-.422.165-1.058.362-2.226.418c-1.266.06-1.645.072-4.85.079s-3.582-.006-4.848-.06m9.783-16.192a1.44 1.44 0 1 0 1.437-1.442a1.44 1.44 0 0 0-1.437 1.442M5.839 12.012a6.161 6.161 0 1 0 12.323-.024a6.162 6.162 0 0 0-12.323.024M8 12.008A4 4 0 1 1 12.008 16A4 4 0 0 1 8 12.008"></path>
+            </svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" style="width: 40px; height: 44px; display: inline-flex; align-items: center; justify-content: center">
+            <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M23.498 6.186a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.02 3.02 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.02 3.02 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.02 3.02 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z"></path>
+            </svg>
+          </a>
+        </div>
+
+        <a href="#tour" class="btn-ghost xc" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border: 1px solid rgba(243,238,232,.4); border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase">Tickets</a>
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-menu" class="mobile-menu" style="position: absolute; z-index: 5; top: 92px; left: 16px; right: 16px; flex-direction: column; gap: 2px; padding: 12px; background: rgba(17,15,14,.96); border: 1px solid rgba(243,238,232,.12); border-radius: 18px">
+      <a href="#music" class="x" style="display: flex; align-items: center; min-height: 56px; padding: 0 16px; font-size: 26px; font-weight: 900; text-transform: uppercase">Music</a>
+      <a href="#visuals" class="x" style="display: flex; align-items: center; min-height: 56px; padding: 0 16px; font-size: 26px; font-weight: 900; text-transform: uppercase">Visuals</a>
+      <a href="#tour" class="x" style="display: flex; align-items: center; min-height: 56px; padding: 0 16px; font-size: 26px; font-weight: 900; text-transform: uppercase">Tour</a>
+      <a href="#join" class="x" style="display: flex; align-items: center; min-height: 56px; padding: 0 16px; font-size: 26px; font-weight: 900; text-transform: uppercase; color: var(--accent, #FF5B4A)">Join the list</a>
+    </div>
+
+    <!-- Hero Main Typography & Floating Player -->
+    <div style="position: relative; z-index: 2; flex: 1; width: 100%; max-width: 1440px; margin: 0 auto; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; padding: 40px clamp(20px, 5vw, 72px) clamp(44px, 6vw, 80px)">
+      <!-- Single Release Pill -->
+      <p class="xc" style="display: flex; align-items: center; gap: 12px; margin: 0 0 28px; font-size: 13px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: #E4DDD5">
+        <span class="pulse" aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent, #FF5B4A); color: var(--accent, #FF5B4A)"></span>
+        New single · Static Hearts · Out now
+      </p>
+
+      <!-- Main Headline -->
+      <h1 class="x" style="margin: 0; display: flex; flex-direction: column; font-size: clamp(54px, 9vw, 128px); font-weight: 900; line-height: .86; letter-spacing: -.025em; text-transform: uppercase; color: #F3EEE8">
+        <span style="display: block; overflow: hidden; padding-bottom: .04em"><span class="rise">The</span></span>
+        <span style="display: block; overflow: hidden; padding-bottom: .04em"><span class="rise d1">Night</span></span>
+        <span style="display: flex; align-items: flex-end">
+          <span style="display: block; overflow: hidden; padding-bottom: .04em"><span class="rise d2">Sings</span></span>
+          <span class="script ink" style="font-size: 1.12em; font-weight: 400; line-height: .6; letter-spacing: 0; text-transform: none; color: var(--accent, #FF5B4A); margin-left: -.18em; margin-bottom: .02em">back</span>
+        </span>
+      </h1>
+
+      <!-- Subtitle & CTAs -->
+      <div class="fade" style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px 36px; margin-top: 40px">
+        <p style="margin: 0; max-width: 340px; font-size: 16px; line-height: 1.6; color: #CFC7BE">Live-room vocals, late-night guitars and songs written for the last train home.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px">
+          <a href="#music" class="btn-primary x" style="display: inline-flex; align-items: center; gap: 12px; min-height: 54px; padding: 0 28px; border-radius: 999px; background: var(--accent, #FF5B4A); color: #0B0A09; font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase">
+            Listen now
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7M8 7h9v9"></path>
+            </svg>
+          </a>
+          <a href="#tour" class="btn-ghost x" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 28px; border-radius: 999px; border: 1px solid rgba(243,238,232,.4); font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase">Tour dates</a>
+        </div>
+      </div>
+
+      <!-- Floating Glassmorphism Audio Player Widget -->
+      <div class="player fade" style="position: absolute; right: clamp(20px, 5vw, 72px); bottom: clamp(44px, 6vw, 80px); width: 340px; box-sizing: border-box; padding: 16px; border-radius: 20px; background: rgba(17,15,14,.72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(243,238,232,.12); display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; align-items: center; gap: 14px">
+          <!-- Play / Pause Button -->
+          <button id="hero-play-btn" type="button" class="play-btn" aria-label="Play Static Hearts" style="flex: none; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--accent, #FF5B4A); color: #0B0A09; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+            <svg id="hero-play-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M8 5.5v13l11-6.5z"></path>
+            </svg>
+            <svg id="hero-pause-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="display: none;">
+              <path fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"></path>
+            </svg>
+          </button>
+
+          <!-- Track Info -->
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
+            <span id="player-status" class="xc" style="font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #A39C94">Press play</span>
+            <span id="player-title" class="serif" style="font-size: 22px; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Static Hearts</span>
+          </div>
+
+          <!-- Dancing Equalizer Bars -->
+          <span id="hero-eq" class="eq" aria-hidden="true" style="display: inline-flex; align-items: flex-end; gap: 3px; height: 20px">
+            <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+            <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+            <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+            <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+          </span>
+        </div>
+
+        <!-- Duration & Dynamic Progress Bar -->
+        <div style="display: flex; align-items: center; gap: 10px">
+          <span id="player-time-current" class="xc" style="font-size: 11px; color: #A39C94; letter-spacing: .08em">0:00</span>
+          <div style="flex: 1; height: 3px; border-radius: 3px; background: rgba(243,238,232,.16); overflow: hidden">
+            <div id="player-prog-bar" style="height: 100%; width: 0; background: #F3EEE8; border-radius: 3px; transition: width 0.3s ease"></div>
+          </div>
+          <span id="player-len" class="xc" style="font-size: 11px; color: #A39C94; letter-spacing: .08em">3:42</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       CROSSING MARQUEE ANNOUNCEMENT BANNERS
+       ====================================================================== -->
+  <section aria-label="Announcements" style="position: relative; height: 210px; overflow: hidden; background: #0B0A09">
+    <!-- Top Outlined Ribbon (Reversed) -->
+    <div aria-hidden="true" style="position: absolute; left: -6%; right: -6%; top: 76px; transform: rotate(3deg); padding: 16px 0; overflow: hidden; border-top: 1px solid rgba(243,238,232,.14); border-bottom: 1px solid rgba(243,238,232,.14)">
+      <div class="marquee-track rev x" style="font-size: 38px; font-weight: 900; text-transform: uppercase; color: transparent; -webkit-text-stroke: 1px rgba(243,238,232,.45)">
+        <span style="padding: 0 32px; white-space: nowrap">Live this winter</span>
+        <span style="padding: 0 32px; white-space: nowrap">Static Hearts</span>
+        <span style="padding: 0 32px; white-space: nowrap">Esme Ray</span>
+        <span style="padding: 0 32px; white-space: nowrap">Front row only</span>
+        <span style="padding: 0 32px; white-space: nowrap">Live this winter</span>
+        <span style="padding: 0 32px; white-space: nowrap">Static Hearts</span>
+        <span style="padding: 0 32px; white-space: nowrap">Esme Ray</span>
+        <span style="padding: 0 32px; white-space: nowrap">Front row only</span>
+      </div>
+    </div>
+
+    <!-- Bottom Accent Solid Ribbon -->
+    <div style="position: absolute; left: -6%; right: -6%; top: 70px; transform: rotate(-2.5deg); padding: 16px 0; overflow: hidden; background: var(--accent, #FF5B4A); color: #0B0A09; box-shadow: 0 20px 40px rgba(0,0,0,.4)">
+      <div class="marquee-track">
+        <span class="x" style="padding: 0 28px; white-space: nowrap; font-size: 38px; font-weight: 900; text-transform: uppercase">New single out now</span>
+        <span aria-hidden="true" style="font-size: 26px">✦</span>
+        <span class="serif" style="padding: 0 28px; white-space: nowrap; font-size: 46px; font-style: italic">Static Hearts</span>
+        <span aria-hidden="true" style="font-size: 26px">✦</span>
+        <span class="x" style="padding: 0 28px; white-space: nowrap; font-size: 38px; font-weight: 900; text-transform: uppercase">Stream everywhere</span>
+        <span aria-hidden="true" style="font-size: 26px">✦</span>
+        <span class="serif" style="padding: 0 28px; white-space: nowrap; font-size: 46px; font-style: italic">Live this winter</span>
+        <span aria-hidden="true" style="font-size: 26px">✦</span>
+        <span aria-hidden="true" class="x" style="padding: 0 28px; white-space: nowrap; font-size: 38px; font-weight: 900; text-transform: uppercase">New single out now</span>
+        <span aria-hidden="true" style="font-size: 26px">✦</span>
+        <span aria-hidden="true" class="serif" style="padding: 0 28px; white-space: nowrap; font-size: 46px; font-style: italic">Static Hearts</span>
+        <span aria-hidden="true" style="font-size: 26px">✦</span>
+        <span aria-hidden="true" class="x" style="padding: 0 28px; white-space: nowrap; font-size: 38px; font-weight: 900; text-transform: uppercase">Stream everywhere</span>
+        <span aria-hidden="true" style="font-size: 26px">✦</span>
+        <span aria-hidden="true" class="serif" style="padding: 0 28px; white-space: nowrap; font-size: 46px; font-style: italic">Live this winter</span>
+        <span aria-hidden="true" style="font-size: 26px">✦</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       VISUALS (THE LOOKBOOK)
+       ====================================================================== -->
+  <section id="visuals" style="position: relative; overflow: hidden; background: #0B0A09; color: #F3EEE8; padding: clamp(72px, 9vw, 140px) 0 clamp(96px, 11vw, 170px)">
+    <!-- Giant Watermark Typography -->
+    <div class="x" aria-hidden="true" style="position: absolute; left: 50%; top: 60%; transform: translate(-50%, -50%); font-size: 31vw; font-weight: 900; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(243,238,232,.07); white-space: nowrap; pointer-events: none; text-transform: uppercase">Eras</div>
+    
+    <!-- Grain Overlay -->
+    <svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .07; pointer-events: none">
+      <filter id="grainB">
+        <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grainB)"></rect>
+    </svg>
+
+    <div style="position: relative; max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 72px)">
+      <!-- Visuals Header -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 32px 80px; align-items: end">
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 26px">
+          <span class="xc" style="display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; border: 1px solid rgba(243,238,232,.25); border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase">
+            <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent, #FF5B4A)"></span>
+            02 — Visuals
+          </span>
+          <h2 class="serif" style="margin: 0; font-size: clamp(58px, 8.4vw, 128px); font-weight: 400; line-height: .88; letter-spacing: -.015em; color: var(--accent, #FF5B4A); text-wrap: balance">
+            The art of <em style="color: #F3EEE8">being heard.</em>
+          </h2>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 22px; max-width: 440px; padding-bottom: 10px">
+          <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #CFC7BE; text-wrap: pretty">Every record gets its own world — a colour, a mood, a room you can walk into. These are the frames behind Static Hearts, shot between late-night sessions and first takes.</p>
+          <a href="#visuals" class="xc" onclick="openFirstLook()" style="display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-size: 13px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; border-bottom: 1px solid rgba(243,238,232,.3)">
+            See the full lookbook
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7M8 7h9v9"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4 Looks Grid with Staggered Visual Alignment -->
+      <div class="looks">
+        
+        <!-- Look 01: Red Room (Era I) -->
+        <figure class="look" style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+          <div style="position: relative">
+            <div class="look-img" style="position: relative; overflow: hidden; aspect-ratio: 3 / 4.3; background: #1A1714; cursor: pointer" data-look-index="0">
+              <img src="./assets/ee3bb94a7d9be7c583a296c5b7cf267e.jpg" alt="Portrait in a red suit against a burnt-orange backdrop" style="display: block; width: 100%; height: 100%; object-fit: cover">
+              <span class="x" style="position: absolute; left: 14px; bottom: 12px; font-size: 12px; font-weight: 900; letter-spacing: .14em; color: #F3EEE8">01</span>
+            </div>
+            <button type="button" class="notch look-notch-btn" data-look-index="0" aria-label="Open Era I, Red Room" style="position: absolute; top: 0; right: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: #0B0A09; color: #F3EEE8; border: 0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17 17 7M8 7h9v9"></path>
+              </svg>
+            </button>
+          </div>
+          <figcaption style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(243,238,232,.16)">
+            <span class="serif" style="font-size: 24px; font-style: italic">Red Room</span>
+            <span class="xc" style="font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #A39C94">Era I</span>
+          </figcaption>
+        </figure>
+
+        <!-- Look 02: Golden Hour (Era II) -->
+        <figure class="look" style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+          <div style="position: relative">
+            <div class="look-img" style="position: relative; overflow: hidden; aspect-ratio: 3 / 4.3; background: #1A1714; cursor: pointer" data-look-index="1">
+              <img src="./assets/08161b9127ec885bb45ec3b1c3272d34.jpg" alt="Seated figure in a knit sweater under a warm streak of light" style="display: block; width: 100%; height: 100%; object-fit: cover">
+              <span class="x" style="position: absolute; left: 14px; bottom: 12px; font-size: 12px; font-weight: 900; letter-spacing: .14em; color: #F3EEE8">02</span>
+            </div>
+            <button type="button" class="notch look-notch-btn" data-look-index="1" aria-label="Open Era II, Golden Hour" style="position: absolute; top: 0; right: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: #0B0A09; color: #F3EEE8; border: 0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17 17 7M8 7h9v9"></path>
+              </svg>
+            </button>
+          </div>
+          <figcaption style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(243,238,232,.16)">
+            <span class="serif" style="font-size: 24px; font-style: italic">Golden Hour</span>
+            <span class="xc" style="font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #A39C94">Era II</span>
+          </figcaption>
+        </figure>
+
+        <!-- Look 03: Wild Card (Era III) -->
+        <figure class="look" style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+          <div style="position: relative">
+            <div class="look-img" style="position: relative; overflow: hidden; aspect-ratio: 3 / 4.3; background: #1A1714; cursor: pointer" data-look-index="2">
+              <img src="./assets/d34af629590d4a20eb3c1b494fee5d5f.jpg" alt="Close-up portrait in a leopard-print coat against deep red" style="display: block; width: 100%; height: 100%; object-fit: cover">
+              <span class="x" style="position: absolute; left: 14px; bottom: 12px; font-size: 12px; font-weight: 900; letter-spacing: .14em; color: #F3EEE8">03</span>
+            </div>
+            <button type="button" class="notch look-notch-btn" data-look-index="2" aria-label="Open Era III, Wild Card" style="position: absolute; top: 0; right: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: #0B0A09; color: #F3EEE8; border: 0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17 17 7M8 7h9v9"></path>
+              </svg>
+            </button>
+          </div>
+          <figcaption style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(243,238,232,.16)">
+            <span class="serif" style="font-size: 24px; font-style: italic">Wild Card</span>
+            <span class="xc" style="font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #A39C94">Era III</span>
+          </figcaption>
+        </figure>
+
+        <!-- Look 04: After Dark (Era IV) -->
+        <figure class="look" style="margin: 0; display: flex; flex-direction: column; gap: 14px">
+          <div style="position: relative">
+            <div class="look-img" style="position: relative; overflow: hidden; aspect-ratio: 3 / 4.3; background: #1A1714; cursor: pointer" data-look-index="3">
+              <img src="./assets/9c9f4bd0bfcb051273f6768d2afbb263.jpg" alt="Figure in a dark coat and red trousers seated against grey" style="display: block; width: 100%; height: 100%; object-fit: cover">
+              <span class="x" style="position: absolute; left: 14px; bottom: 12px; font-size: 12px; font-weight: 900; letter-spacing: .14em; color: #F3EEE8">04</span>
+            </div>
+            <button type="button" class="notch look-notch-btn" data-look-index="3" aria-label="Open Era IV, After Dark" style="position: absolute; top: 0; right: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; background: #0B0A09; color: #F3EEE8; border: 0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17 17 7M8 7h9v9"></path>
+              </svg>
+            </button>
+          </div>
+          <figcaption style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(243,238,232,.16)">
+            <span class="serif" style="font-size: 24px; font-style: italic">After Dark</span>
+            <span class="xc" style="font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #A39C94">Era IV</span>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       MUSIC (LATEST RELEASE & INTERACTIVE TRACKLIST)
+       ====================================================================== -->
+  <section id="music" style="background: #110F0E; color: #F3EEE8; padding: clamp(80px, 10vw, 140px) 0; border-top: 1px solid rgba(243,238,232,.08)">
+    <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 72px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: clamp(48px, 7vw, 110px); align-items: center">
+      
+      <!-- Interactive Vinyl Record Player Graphic -->
+      <div style="position: relative; width: 100%; max-width: 540px; padding-right: 16%; box-sizing: border-box">
+        <!-- Vinyl Disc with Grooves -->
+        <div id="vinyl-wrap" class="vin-wrap" aria-hidden="true" style="position: absolute; top: 6%; right: 0; width: 84%; aspect-ratio: 1; z-index: 0">
+          <div id="vinyl-disc" class="vinyl" style="width: 100%; height: 100%; border-radius: 50%; background: repeating-radial-gradient(circle at center, #151413 0 2px, #1F1D1B 2px 4px); box-shadow: 0 30px 60px rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center">
+            <!-- Center Vinyl Label -->
+            <div style="width: 34%; height: 34%; border-radius: 50%; background: var(--accent, #FF5B4A); display: flex; align-items: center; justify-content: center; transition: background 0.3s">
+              <div style="width: 10%; height: 10%; border-radius: 50%; background: #110F0E"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Album Cover Sleeve -->
+        <div style="position: relative; z-index: 1; aspect-ratio: 1; background: var(--accent, #FF5B4A); color: #0B0A09; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.55); display: flex; flex-direction: column; justify-content: space-between; padding: 7%; box-sizing: border-box; transition: background 0.3s">
+          <div class="xc" style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 800; letter-spacing: .24em; text-transform: uppercase">
+            <span>Esme Ray</span>
+            <span>LP · 01</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: flex-start">
+            <span class="script" style="font-size: clamp(72px, 9vw, 132px); line-height: .7; transform: rotate(-8deg); margin-left: -2%">Static</span>
+            <span class="x" style="font-size: clamp(40px, 5.2vw, 76px); font-weight: 900; line-height: .9; letter-spacing: -.02em; text-transform: uppercase">Hearts</span>
+          </div>
+          <div class="xc" style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase">
+            <span>Side A / Side B</span>
+            <span>33⅓</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Release Information & Interactive Tracklist -->
+      <div style="display: flex; flex-direction: column; gap: 26px; min-width: 0">
+        <span class="xc" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; border: 1px solid rgba(243,238,232,.25); border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase">
+          <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent, #FF5B4A)"></span>
+          03 — Latest release
+        </span>
+        
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <h2 class="serif" style="margin: 0; font-size: clamp(52px, 6.4vw, 96px); font-weight: 400; line-height: .92; letter-spacing: -.01em">
+            Static <em style="color: var(--accent, #FF5B4A)">Hearts</em>
+          </h2>
+          <p class="xc" style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #A39C94">
+            Album · Available Now on All Streaming Platforms
+          </p>
+        </div>
+
+        <!-- Streaming Badges -->
+        <div style="display: flex; flex-wrap: wrap; gap: 10px">
+          <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" class="btn-ghost xc" style="display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 18px; border: 1px solid rgba(243,238,232,.3); border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12s12-5.4 12-12S18.66 0 12 0m5.521 17.34c-.24.359-.66.48-1.021.24c-2.82-1.74-6.36-2.101-10.561-1.141c-.418.122-.779-.179-.899-.539c-.12-.421.18-.78.54-.9c4.56-1.021 8.520-.6 11.64 1.32c.42.18.479.659.301 1.020m1.44-3.3c-.301.42-.841.6-1.262.3c-3.239-1.98-8.159-2.58-11.939-1.38c-.479.12-1.020-.12-1.14-.6s.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2m.12-3.36C15.24 8.4 8.82 8.16 5.160 9.301c-.6.179-1.2-.181-1.38-.721c-.18-.601.18-1.2.72-1.381c4.26-1.26 11.28-1.020 15.721 1.621c.539.3.719 1.020.419 1.56c-.299.421-1.020.599-1.559.3"></path>
+            </svg>
+            Spotify
+          </a>
+          <a href="https://music.apple.com" target="_blank" rel="noopener noreferrer" class="btn-ghost xc" style="display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 18px; border: 1px solid rgba(243,238,232,.3); border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M23.994 6.124a9.2 9.2 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5 5 0 0 0-1.877-.726a10.5 10.5 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986q-.227.014-.455.026c-.747.043-1.49.123-2.193.4c-1.336.53-2.3 1.452-2.865 2.78c-.192.448-.292.925-.363 1.408a11 11 0 0 0-.1 1.18c0 .032-.007.062-.01.093v12.223l.027.424c.05.815.154 1.624.497 2.373c.65 1.42 1.738 2.353 3.234 2.801c.42.127.856.187 1.293.228c.555.053 1.11.06 1.667.06h11.03a13 13 0 0 0 1.57-.1c.822-.106 1.596-.35 2.295-.81a5.05 5.05 0 0 0 1.88-2.207c.186-.42.293-.87.37-1.324c.113-.675.138-1.358.137-2.040c-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206c-.29.59-.76.962-1.388 1.14q-.524.15-1.07.173c-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 0 1 1.038-2.022c.323-.16.67-.25 1.018-.324c.378-.082.758-.153 1.134-.24c.274-.063.457-.23.51-.516a1 1 0 0 0 .02-.193q0-2.723-.002-5.443a.7.7 0 0 0-.026-.185c-.04-.15-.15-.243-.304-.234c-.16.01-.318.035-.475.066q-1.140.226-2.280.456l-2.325.47l-1.374.278l-.048.013c-.277.077-.377.203-.39.49q-.002.063 0 .13c-.002 2.602 0 5.204-.003 7.805c0 .42-.047.836-.215 1.227c-.278.64-.77 1.04-1.434 1.233q-.526.152-1.075.172c-.96.036-1.755-.6-1.92-1.544c-.14-.812.23-1.685 1.154-2.075c.357-.15.73-.232 1.108-.31c.287-.06.575-.116.86-.177q.574-.126.6-.714v-.15l.002-8.882c0-.123.013-.25.042-.37c.07-.285.273-.448.546-.518c.255-.066.515-.112.774-.165q1.1-.224 2.2-.444l2.27-.46l2.01-.403c.22-.043.442-.088.663-.106c.31-.025.523.17.554.482q.012.11.012.223q.003 2.866 0 5.732z"></path>
+            </svg>
+            Apple Music
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="btn-ghost xc" style="display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 18px; border: 1px solid rgba(243,238,232,.3); border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase">
+            <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M23.498 6.186a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.02 3.02 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.02 3.02 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.02 3.02 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z"></path>
+            </svg>
+            YouTube
+          </a>
+        </div>
+
+        <!-- Tracklist Ordered List -->
+        <ol aria-label="Tracklist" style="margin: 6px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(243,238,232,.12)">
+          
+          <!-- Track 01 -->
+          <li style="list-style: none">
+            <button type="button" class="track track-row-btn" data-track-index="0" aria-pressed="false" style="width: 100%; display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 16px; min-height: 62px; padding: 0 10px; background: transparent; border: 0; border-bottom: 1px solid rgba(243,238,232,.1); color: #F3EEE8; font: inherit; text-align: left; cursor: pointer">
+              <span style="display: flex; align-items: center">
+                <span class="track-num xc" style="font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #A39C94">01</span>
+                <span class="track-eq eq on" aria-hidden="true" style="display: none; align-items: flex-end; gap: 3px; height: 16px">
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                </span>
+              </span>
+              <span class="serif" style="font-size: clamp(22px, 2.2vw, 28px); line-height: 1.1">Static Hearts</span>
+              <span class="xc" style="font-size: 13px; font-weight: 600; letter-spacing: .1em; color: #A39C94">3:42</span>
+            </button>
+          </li>
+
+          <!-- Track 02 -->
+          <li style="list-style: none">
+            <button type="button" class="track track-row-btn" data-track-index="1" aria-pressed="false" style="width: 100%; display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 16px; min-height: 62px; padding: 0 10px; background: transparent; border: 0; border-bottom: 1px solid rgba(243,238,232,.1); color: #F3EEE8; font: inherit; text-align: left; cursor: pointer">
+              <span style="display: flex; align-items: center">
+                <span class="track-num xc" style="font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #A39C94">02</span>
+                <span class="track-eq eq on" aria-hidden="true" style="display: none; align-items: flex-end; gap: 3px; height: 16px">
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                </span>
+              </span>
+              <span class="serif" style="font-size: clamp(22px, 2.2vw, 28px); line-height: 1.1">Last Train Home</span>
+              <span class="xc" style="font-size: 13px; font-weight: 600; letter-spacing: .1em; color: #A39C94">4:05</span>
+            </button>
+          </li>
+
+          <!-- Track 03 -->
+          <li style="list-style: none">
+            <button type="button" class="track track-row-btn" data-track-index="2" aria-pressed="false" style="width: 100%; display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 16px; min-height: 62px; padding: 0 10px; background: transparent; border: 0; border-bottom: 1px solid rgba(243,238,232,.1); color: #F3EEE8; font: inherit; text-align: left; cursor: pointer">
+              <span style="display: flex; align-items: center">
+                <span class="track-num xc" style="font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #A39C94">03</span>
+                <span class="track-eq eq on" aria-hidden="true" style="display: none; align-items: flex-end; gap: 3px; height: 16px">
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                </span>
+              </span>
+              <span class="serif" style="font-size: clamp(22px, 2.2vw, 28px); line-height: 1.1">Neon Prayer</span>
+              <span class="xc" style="font-size: 13px; font-weight: 600; letter-spacing: .1em; color: #A39C94">3:18</span>
+            </button>
+          </li>
+
+          <!-- Track 04 -->
+          <li style="list-style: none">
+            <button type="button" class="track track-row-btn" data-track-index="3" aria-pressed="false" style="width: 100%; display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 16px; min-height: 62px; padding: 0 10px; background: transparent; border: 0; border-bottom: 1px solid rgba(243,238,232,.1); color: #F3EEE8; font: inherit; text-align: left; cursor: pointer">
+              <span style="display: flex; align-items: center">
+                <span class="track-num xc" style="font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #A39C94">04</span>
+                <span class="track-eq eq on" aria-hidden="true" style="display: none; align-items: flex-end; gap: 3px; height: 16px">
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                </span>
+              </span>
+              <span class="serif" style="font-size: clamp(22px, 2.2vw, 28px); line-height: 1.1">Paper Crowns</span>
+              <span class="xc" style="font-size: 13px; font-weight: 600; letter-spacing: .1em; color: #A39C94">3:57</span>
+            </button>
+          </li>
+
+          <!-- Track 05 -->
+          <li style="list-style: none">
+            <button type="button" class="track track-row-btn" data-track-index="4" aria-pressed="false" style="width: 100%; display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 16px; min-height: 62px; padding: 0 10px; background: transparent; border: 0; border-bottom: 1px solid rgba(243,238,232,.1); color: #F3EEE8; font: inherit; text-align: left; cursor: pointer">
+              <span style="display: flex; align-items: center">
+                <span class="track-num xc" style="font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #A39C94">05</span>
+                <span class="track-eq eq on" aria-hidden="true" style="display: none; align-items: flex-end; gap: 3px; height: 16px">
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                  <span style="width: 3px; height: 100%; border-radius: 2px; background: var(--accent, #FF5B4A)"></span>
+                </span>
+              </span>
+              <span class="serif" style="font-size: clamp(22px, 2.2vw, 28px); line-height: 1.1">Slow Burn</span>
+              <span class="xc" style="font-size: 13px; font-weight: 600; letter-spacing: .1em; color: #A39C94">5:10</span>
+            </button>
+          </li>
+
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       TOUR DATES
+       ====================================================================== -->
+  <section id="tour" style="background: #0B0A09; color: #F3EEE8; padding: clamp(80px, 10vw, 140px) 0">
+    <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 72px)">
+      <!-- Tour Header -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px 64px; margin-bottom: clamp(40px, 5vw, 64px)">
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 26px">
+          <span class="xc" style="display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; border: 1px solid rgba(243,238,232,.25); border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase">
+            <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent, #FF5B4A)"></span>
+            04 — Tour
+          </span>
+          <h2 class="x" style="margin: 0; font-size: clamp(50px, 8vw, 120px); font-weight: 900; line-height: .86; letter-spacing: -.025em; text-transform: uppercase">
+            Live this <span class="script" style="display: inline-block; font-size: 1.1em; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--accent, #FF5B4A); transform: rotate(-7deg)">winter</span>
+          </h2>
+        </div>
+        <p style="margin: 0; max-width: 360px; font-size: 16px; line-height: 1.6; color: #CFC7BE">Dates and venues are being locked in now. Join the list and you'll hear first — before tickets go public.</p>
+      </div>
+
+      <!-- Tour Rows List -->
+      <ul style="margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(243,238,232,.16)">
+        
+        <!-- Mumbai -->
+        <li class="tour-row" style="display: grid; grid-template-columns: 150px 1.2fr 1fr auto; align-items: center; gap: 24px; padding: 26px 0; border-bottom: 1px solid rgba(243,238,232,.16)">
+          <span class="xc tour-date" style="font-size: 14px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--accent, #FF5B4A)">14 NOV</span>
+          <span class="x" style="font-size: clamp(26px, 3vw, 42px); font-weight: 900; line-height: 1; text-transform: uppercase; letter-spacing: -.01em">Mumbai</span>
+          <span class="tour-venue" style="font-size: 15px; color: #A39C94">Famous Studios</span>
+          <button type="button" class="btn-ghost xc tour-notify-btn" data-city="Mumbai" style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 20px; border: 1px solid rgba(243,238,232,.35); border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; background: transparent; color: inherit; cursor: pointer">Notify me</button>
+        </li>
+
+        <!-- Bengaluru -->
+        <li class="tour-row" style="display: grid; grid-template-columns: 150px 1.2fr 1fr auto; align-items: center; gap: 24px; padding: 26px 0; border-bottom: 1px solid rgba(243,238,232,.16)">
+          <span class="xc tour-date" style="font-size: 14px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--accent, #FF5B4A)">21 NOV</span>
+          <span class="x" style="font-size: clamp(26px, 3vw, 42px); font-weight: 900; line-height: 1; text-transform: uppercase; letter-spacing: -.01em">Bengaluru</span>
+          <span class="tour-venue" style="font-size: 15px; color: #A39C94">Jayamahal Palace Grounds</span>
+          <button type="button" class="btn-ghost xc tour-notify-btn" data-city="Bengaluru" style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 20px; border: 1px solid rgba(243,238,232,.35); border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; background: transparent; color: inherit; cursor: pointer">Notify me</button>
+        </li>
+
+        <!-- New Delhi -->
+        <li class="tour-row" style="display: grid; grid-template-columns: 150px 1.2fr 1fr auto; align-items: center; gap: 24px; padding: 26px 0; border-bottom: 1px solid rgba(243,238,232,.16)">
+          <span class="xc tour-date" style="font-size: 14px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--accent, #FF5B4A)">28 NOV</span>
+          <span class="x" style="font-size: clamp(26px, 3vw, 42px); font-weight: 900; line-height: 1; text-transform: uppercase; letter-spacing: -.01em">New Delhi</span>
+          <span class="tour-venue" style="font-size: 15px; color: #A39C94">NSIC Grounds, Okhla</span>
+          <button type="button" class="btn-ghost xc tour-notify-btn" data-city="New Delhi" style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 20px; border: 1px solid rgba(243,238,232,.35); border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; background: transparent; color: inherit; cursor: pointer">Notify me</button>
+        </li>
+
+        <!-- Pune -->
+        <li class="tour-row" style="display: grid; grid-template-columns: 150px 1.2fr 1fr auto; align-items: center; gap: 24px; padding: 26px 0; border-bottom: 1px solid rgba(243,238,232,.16)">
+          <span class="xc tour-date" style="font-size: 14px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--accent, #FF5B4A)">05 DEC</span>
+          <span class="x" style="font-size: clamp(26px, 3vw, 42px); font-weight: 900; line-height: 1; text-transform: uppercase; letter-spacing: -.01em">Pune</span>
+          <span class="tour-venue" style="font-size: 15px; color: #A39C94">Amanora Arena</span>
+          <button type="button" class="btn-ghost xc tour-notify-btn" data-city="Pune" style="display: inline-flex; align-items: center; min-height: 46px; padding: 0 20px; border: 1px solid rgba(243,238,232,.35); border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; background: transparent; color: inherit; cursor: pointer">Notify me</button>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       JOIN THE FRONT ROW / FOOTER
+       ====================================================================== -->
+  <footer id="join" class="on-accent" style="position: relative; overflow: hidden; background: var(--accent, #FF5B4A); color: #0B0A09; transition: background 0.3s">
+    <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(80px, 9vw, 130px) clamp(20px, 5vw, 72px) 0">
+      
+      <!-- Top Grid: Callout & Form -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 40px 80px; align-items: end">
+        <h2 class="serif" style="margin: 0; font-size: clamp(56px, 7.6vw, 116px); font-weight: 400; line-height: .9; letter-spacing: -.015em">
+          Join the <em>front row.</em>
+        </h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 22px; max-width: 480px">
+          <p style="margin: 0; font-size: 17px; line-height: 1.6">Early tickets, unreleased demos and the odd voice note from the studio. One email a month, never more.</p>
+          
+          <!-- Subscription Form -->
+          <form id="join-form" style="display: flex; flex-wrap: wrap; gap: 10px">
+            <label for="join-email" class="xc" style="width: 100%; font-size: 12px; font-weight: 800; letter-spacing: .22em; text-transform: uppercase">Email address</label>
+            <input id="join-email" class="inp" type="email" required placeholder="you@example.com" style="flex: 1 1 220px; min-width: 0; min-height: 56px; box-sizing: border-box; padding: 0 22px; border: 1.5px solid #0B0A09; border-radius: 999px; background: transparent; color: #0B0A09; font: inherit; font-size: 16px">
+            <button type="submit" class="x" style="min-height: 56px; padding: 0 28px; border: 0; border-radius: 999px; background: #0B0A09; color: #F3EEE8; font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: transform 0.2s, background 0.2s">Join the list</button>
+          </form>
+
+          <!-- Success State -->
+          <div id="join-success" style="display: none;">
+            <p role="status" class="serif" style="margin: 0; font-size: 30px; font-style: italic; line-height: 1.2">You're on the list. See you at the front.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Giant Footprint Typography -->
+      <div class="x" aria-hidden="true" style="margin-top: clamp(72px, 9vw, 120px); font-size: clamp(58px, 14.2vw, 212px); font-weight: 900; line-height: .78; letter-spacing: -.035em; text-transform: uppercase; white-space: nowrap; text-align: center; user-select: none">
+        Esme Ray
+      </div>
+
+      <!-- Footer Sub-bar -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 32px; margin-top: 40px; padding: 22px 0 30px; border-top: 1px solid rgba(11,10,9,.25)">
+        <span class="xc" style="font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase">© 2026 Esme Ray</span>
+        
+        <div class="xc" style="display: flex; flex-wrap: wrap; gap: 4px 24px; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style="color: #0B0A09; min-height: 44px; display: inline-flex; align-items: center">Instagram</a>
+          <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" style="color: #0B0A09; min-height: 44px; display: inline-flex; align-items: center">Spotify</a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style="color: #0B0A09; min-height: 44px; display: inline-flex; align-items: center">YouTube</a>
+        </div>
+
+        <span class="xc" style="font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase">
+          Booking · <a href="mailto:booking@esmeraymusic.com" style="color:#0B0A09; text-decoration: underline">booking@esmeraymusic.com</a>
+        </span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       INTERACTIVE LOOKBOOK LIGHTBOX MODAL
+       ====================================================================== -->
+  <div id="lookbook-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visual lookbook preview">
+    <div class="lightbox-content">
+      <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <div class="lightbox-img-wrap">
+        <img id="lightbox-img" src="" alt="Lookbook visual preview">
+      </div>
+      
+      <div class="lightbox-details">
+        <span id="lightbox-era" class="xc" style="font-size: 12px; font-weight: 800; letter-spacing: .25em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px">Era I</span>
+        <h3 id="lightbox-title" class="serif" style="margin: 0 0 16px; font-size: clamp(36px, 4vw, 54px); font-style: italic; line-height: 1">Red Room</h3>
+        <p id="lightbox-desc" style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #CFC7BE"></p>
+        <div style="border-top: 1px solid var(--border-light); padding-top: 16px">
+          <span id="lightbox-credits" class="xc" style="font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: #A39C94"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Application Logic -->
+  <script src="./main.js"></script>
+  <script>
+    function openFirstLook() {
+      const firstNotch = document.querySelector('.look-notch-btn');
+      if (firstNotch) firstNotch.click();
+    }
+  </script>
+</body>
+</html>
