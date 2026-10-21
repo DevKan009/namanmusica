@@ -149,11 +149,11 @@
       if (isPlaying) {
         heroPlayIcon.style.display = 'none';
         heroPauseIcon.style.display = 'block';
-        heroPlayBtn.setAttribute('aria-label', `Pause ${track.title}`);
+        if (heroPlayBtn) heroPlayBtn.setAttribute('aria-label', `Pause ${track.title}`);
       } else {
         heroPlayIcon.style.display = 'block';
         heroPauseIcon.style.display = 'none';
-        heroPlayBtn.setAttribute('aria-label', `Play ${track.title}`);
+        if (heroPlayBtn) heroPlayBtn.setAttribute('aria-label', `Play ${track.title}`);
       }
     }
 

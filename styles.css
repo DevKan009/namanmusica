@@ -577,14 +577,7 @@ input:focus-visible {
 
 
 
-  .player {
-    position: relative !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: 100% !important;
-    max-width: 400px;
-    margin-top: 32px;
-  }
+
 
   .looks {
     grid-template-columns: repeat(2, 1fr) !important;
