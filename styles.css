@@ -284,6 +284,15 @@ input:focus-visible {
   color: var(--text-main);
 }
 
+.brand-logo {
+  transition: transform 0.25s var(--ease-spring), filter 0.25s ease;
+}
+
+.brand-logo:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 4px 16px rgba(255, 91, 74, 0.45));
+}
+
 .play-btn {
   transition: transform 0.2s ease, filter 0.2s ease;
 }
