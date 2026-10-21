@@ -8,7 +8,7 @@ Official artist landing page for **Naman Musica** featuring interactive Web Audi
 - **Visuals Lookbook**: Staggered cards for *Red Room*, *Golden Hour*, *Wild Card*, and *After Dark* with interactive modal previews.
 - **Dual Crossing Marquees**: Angled kinetic marquee banners with infinite scrolling.
 - **Responsive Design**: Mobile-optimized layouts including a compact 2-column lookbook grid and mobile hamburger drawer.
-- **Signature Brand Aesthetic**: Distinctive custom palette with signature color `#e34234` across buttons, badges, and accents.
+- **Signature Brand Aesthetic**: Distinctive custom palette with signature color `#b31f12` across buttons, badges, and accents.
 - **Tour Schedule & Newsletter**: Tour listing and front-row newsletter signup.
 
 ## 🚀 Getting Started

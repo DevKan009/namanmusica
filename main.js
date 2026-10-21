@@ -314,7 +314,7 @@
     });
   }
 
-  // Clear any legacy theme overrides to lock accent to #e34234
+  // Clear any legacy theme overrides to lock accent to #b31f12
   try {
     localStorage.removeItem('naman_theme');
     localStorage.removeItem('esme_theme');
