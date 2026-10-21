@@ -285,12 +285,18 @@ input:focus-visible {
 }
 
 .brand-logo {
+  height: clamp(85px, 8.5vw, 120px);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.8));
   transition: transform 0.25s var(--ease-spring), filter 0.25s ease;
 }
 
 .brand-logo:hover {
   transform: scale(1.08);
-  filter: drop-shadow(0 4px 16px rgba(255, 91, 74, 0.45));
+  filter: drop-shadow(0 6px 20px rgba(255, 91, 74, 0.5));
 }
 
 .play-btn {
@@ -565,6 +571,10 @@ input:focus-visible {
     display: inline-flex !important;
   }
 
+  .brand-logo {
+    height: clamp(75px, 16vw, 95px);
+  }
+
 
 
   .player {
@@ -647,6 +657,10 @@ input:focus-visible {
 }
 
 @media (max-width: 480px) {
+  .brand-logo {
+    height: 76px;
+  }
+
   .looks {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 16px 10px !important;
