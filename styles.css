@@ -153,6 +153,25 @@ input:focus-visible {
   animation: pulse 1.8s ease-out infinite;
 }
 
+/* Hero background photo */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(90deg, rgba(11, 10, 9, 0.88) 0%, rgba(11, 10, 9, 0.55) 45%, rgba(11, 10, 9, 0.25) 100%),
+    linear-gradient(180deg, rgba(11, 10, 9, 0.55) 0%, transparent 25%, transparent 65%, #0B0A09 100%),
+    url("./assets/hero-bg.webp") center 35% / cover no-repeat;
+}
+
+@media (max-width: 900px) {
+  .hero-bg {
+    background:
+      linear-gradient(180deg, rgba(11, 10, 9, 0.6) 0%, rgba(11, 10, 9, 0.35) 40%, rgba(11, 10, 9, 0.85) 100%),
+      url("./assets/hero-bg.webp") 38% center / cover no-repeat;
+  }
+}
+
 /* Hero floating portrait */
 @keyframes portrait-float {
   0%, 100% { transform: translateY(0); }
