@@ -4,7 +4,7 @@
    ========================================================================== */
 
 :root {
-  --accent: #FF5B4A;
+  --accent: #e34234;
   --bg-dark: #0B0A09;
   --bg-elevated: #110F0E;
   --bg-card: #1A1714;
@@ -20,12 +20,6 @@
   --font-script: 'Mr Dafoe', 'Brush Script MT', cursive;
   --ease-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-
-/* Color Themes */
-[data-theme="coral"] { --accent: #FF5B4A; }
-[data-theme="lime"] { --accent: #E4FF3C; }
-[data-theme="pink"] { --accent: #FF5FA8; }
-[data-theme="amber"] { --accent: #F5B640; }
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -404,35 +398,7 @@ input:focus-visible {
   pointer-events: auto !important;
 }
 
-/* Theme Picker Pill */
-.theme-picker {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(243, 238, 232, 0.06);
-  padding: 4px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(243, 238, 232, 0.15);
-}
 
-.theme-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-  padding: 0;
-}
-
-.theme-dot:hover {
-  transform: scale(1.25);
-}
-
-.theme-dot.active {
-  border-color: #F3EEE8;
-  transform: scale(1.15);
-}
 
 /* Lightbox Modal */
 .lightbox {
@@ -562,8 +528,7 @@ input:focus-visible {
 /* Responsive Styles */
 @media (max-width: 900px) {
   .nav-links,
-  .nav-social,
-  .theme-picker {
+  .nav-social {
     display: none !important;
   }
 
@@ -679,6 +644,56 @@ input:focus-visible {
 
   .look figcaption .serif {
     font-size: 16px !important;
+  }
+}
+
+/* Announcement ribbons: separate the two bands on phones so both read */
+@media (max-width: 600px) {
+  .ribbons {
+    height: 250px !important;
+  }
+
+  .ribbon-outline {
+    top: 68px !important;
+    left: -12% !important;
+    right: -12% !important;
+    padding: 12px 0 !important;
+    transform: rotate(11deg) !important;
+  }
+
+  .ribbon-outline .marquee-track {
+    font-size: 34px !important;
+    -webkit-text-stroke: 1px rgba(243, 238, 232, 0.7) !important;
+  }
+
+  .ribbon-outline span {
+    padding: 0 20px !important;
+  }
+
+  .ribbon-solid {
+    top: 92px !important;
+    left: -12% !important;
+    right: -12% !important;
+    padding: 10px 0 !important;
+    transform: rotate(-6deg) !important;
+  }
+
+  .ribbon-solid .marquee-track > span:not([aria-hidden="true"]),
+  .ribbon-solid .marquee-track > span.x,
+  .ribbon-solid .marquee-track > span.serif {
+    padding: 0 18px !important;
+  }
+
+  .ribbon-solid .x {
+    font-size: 26px !important;
+  }
+
+  .ribbon-solid .serif {
+    font-size: 32px !important;
+  }
+
+  .ribbon-solid .marquee-track > span[aria-hidden="true"]:not(.x):not(.serif) {
+    font-size: 18px !important;
   }
 }
 

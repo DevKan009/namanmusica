@@ -314,33 +314,12 @@
     });
   }
 
-  // --- Theme Color Switcher ---
-  const themeDots = document.querySelectorAll('.theme-dot');
-  function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    themeDots.forEach(dot => {
-      if (dot.getAttribute('data-theme-name') === theme) {
-        dot.classList.add('active');
-      } else {
-        dot.classList.remove('active');
-      }
-    });
-    localStorage.setItem('naman_theme', theme);
-  }
-
-  themeDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const theme = dot.getAttribute('data-theme-name');
-      setTheme(theme);
-      showToast(`Accent color updated`);
-    });
-  });
-
-  // Restore saved theme
-  const savedTheme = localStorage.getItem('naman_theme');
-  if (savedTheme) {
-    setTheme(savedTheme);
-  }
+  // Clear any legacy theme overrides to lock accent to #e34234
+  try {
+    localStorage.removeItem('naman_theme');
+    localStorage.removeItem('esme_theme');
+    document.documentElement.removeAttribute('data-theme');
+  } catch (e) {}
 
   // --- Lookbook Lightbox Modal ---
   const LOOKS_DATA = [
