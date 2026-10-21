@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Esme Ray — Official Site Interactive Logic
+   Naman Musica — Official Site Interactive Logic
    High-fidelity audio synth, interactive player, lookbook, and mobile menu
    ========================================================================== */
 
@@ -325,7 +325,7 @@
         dot.classList.remove('active');
       }
     });
-    localStorage.setItem('esme_theme', theme);
+    localStorage.setItem('naman_theme', theme);
   }
 
   themeDots.forEach(dot => {
@@ -337,7 +337,7 @@
   });
 
   // Restore saved theme
-  const savedTheme = localStorage.getItem('esme_theme');
+  const savedTheme = localStorage.getItem('naman_theme');
   if (savedTheme) {
     setTheme(savedTheme);
   }
@@ -374,7 +374,7 @@
       img: './assets/9c9f4bd0bfcb051273f6768d2afbb263.jpg',
       alt: 'Figure in a dark coat and red trousers seated against grey',
       desc: 'Sleek, minimalist, and reflective. Captured on an empty soundstage hours before the winter tour announcement.',
-      credits: 'Creative Direction: Esme Ray & Marcus Thorne'
+      credits: 'Creative Direction: Naman Musica & Marcus Thorne'
     }
   ];
 

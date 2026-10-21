@@ -1,13 +1,13 @@
 {
-  "name": "esme-ray-official",
+  "name": "naman-musica-official",
   "version": "1.0.0",
-  "description": "Esme Ray official artist landing page",
+  "description": "Naman Musica official artist landing page",
   "scripts": {
     "start": "npx -y serve . -p 3000",
     "dev": "npx -y serve . -p 3000",
     "serve": "npx -y serve ."
   },
-  "keywords": ["esme-ray", "music", "landing-page"],
-  "author": "Esme Ray",
+  "keywords": ["naman-musica", "music", "landing-page"],
+  "author": "Naman Musica",
   "license": "MIT"
 }

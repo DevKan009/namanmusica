@@ -1,6 +1,6 @@
-# namanmusica — Esme Ray Official Landing Page
+# Naman Musica — Official Landing Page
 
-Official artist landing page for **Esme Ray** featuring interactive Web Audio synth, responsive visuals lookbook, vinyl music player, tour dates, and newsletter subscription.
+Official artist landing page for **Naman Musica** featuring interactive Web Audio synth, responsive visuals lookbook, vinyl music player, tour dates, and newsletter subscription.
 
 ## 🎵 Features
 
