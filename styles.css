@@ -156,75 +156,25 @@ input:focus-visible {
 /* Hero background photo */
 .hero-bg {
   position: absolute;
-  inset: 0;
+  /* image starts 28% in from the left so the artist sits right of the text */
+  inset: 0 0 0 28%;
   z-index: 0;
   background:
-    linear-gradient(90deg, rgba(11, 10, 9, 0.88) 0%, rgba(11, 10, 9, 0.55) 45%, rgba(11, 10, 9, 0.25) 100%),
     linear-gradient(180deg, rgba(11, 10, 9, 0.55) 0%, transparent 25%, transparent 65%, #0B0A09 100%),
-    url("./assets/hero-bg.webp") center 35% / cover no-repeat;
+    linear-gradient(90deg, rgba(11, 10, 9, 0.3) 0%, rgba(11, 10, 9, 0.1) 100%),
+    url("./assets/hero-bg.webp") 38% 35% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 28%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 28%);
 }
 
 @media (max-width: 900px) {
   .hero-bg {
+    inset: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
     background:
       linear-gradient(180deg, rgba(11, 10, 9, 0.6) 0%, rgba(11, 10, 9, 0.35) 40%, rgba(11, 10, 9, 0.85) 100%),
       url("./assets/hero-bg.webp") 38% center / cover no-repeat;
-  }
-}
-
-/* Hero floating portrait */
-@keyframes portrait-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-}
-
-.hero-portrait {
-  position: absolute;
-  z-index: 2;
-  right: clamp(0px, 4vw, 80px);
-  bottom: 0;
-  width: clamp(300px, 36vw, 560px);
-  pointer-events: none;
-}
-
-.hero-portrait img {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.6));
-  animation: portrait-float 7s ease-in-out infinite;
-  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
-}
-
-.hero-portrait-glow {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 120%;
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255, 91, 74, 0.28), transparent 62%);
-  filter: blur(20px);
-}
-
-@media (max-width: 900px) {
-  .hero-portrait {
-    right: -8vw;
-    bottom: 0;
-    top: auto;
-    width: min(66vw, 340px);
-  }
-
-  /* Text rides at the top, artist stands at the bottom: no overlap */
-  #top {
-    min-height: 960px !important;
-  }
-
-  .hero-content {
-    justify-content: flex-start !important;
-    padding-top: 12px !important;
   }
 }
 
@@ -360,12 +310,6 @@ input:focus-visible {
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.8));
-  transition: transform 0.25s var(--ease-spring), filter 0.25s ease;
-}
-
-.brand-logo:hover {
-  transform: scale(1.08);
-  filter: drop-shadow(0 6px 20px rgba(255, 91, 74, 0.5));
 }
 
 .play-btn {
