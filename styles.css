@@ -214,7 +214,17 @@ input:focus-visible {
     right: -8vw;
     bottom: 0;
     top: auto;
-    width: min(70vw, 380px);
+    width: min(66vw, 340px);
+  }
+
+  /* Text rides at the top, artist stands at the bottom: no overlap */
+  #top {
+    min-height: 960px !important;
+  }
+
+  .hero-content {
+    justify-content: flex-start !important;
+    padding-top: 12px !important;
   }
 }
 
@@ -405,16 +415,41 @@ input:focus-visible {
   margin-top: clamp(56px, 7vw, 100px);
 }
 
-.looks > *:nth-child(2) {
-  margin-top: 96px;
+.looks > *:nth-child(4n + 2) {
+  margin-top: 64px !important;
 }
 
-.looks > *:nth-child(3) {
-  margin-top: 184px;
+.looks > *:nth-child(4n + 3) {
+  margin-top: 28px !important;
 }
 
-.looks > *:nth-child(4) {
-  margin-top: 64px;
+.looks > *:nth-child(4n) {
+  margin-top: 90px !important;
+}
+
+.look-img img {
+  object-fit: cover;
+}
+
+.look-play {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(11, 10, 9, 0.7);
+  border: 1px solid rgba(243, 238, 232, 0.35);
+  color: #F3EEE8;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.look:hover .look-play {
+  background: var(--accent);
+  color: #0B0A09;
 }
 
 /* Track rows */
@@ -508,10 +543,33 @@ input:focus-visible {
   background: #000;
 }
 
-.lightbox-img-wrap img {
+.lightbox-img-wrap img,
+.lightbox-img-wrap iframe {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Portrait Instagram reel embed */
+.lightbox-img-wrap.is-embed {
+  aspect-ratio: auto;
+  height: min(82vh, 720px);
+}
+
+/* Wide YouTube embed: single column, 16:9 */
+.lightbox-content.is-wide {
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 860px;
+}
+
+.lightbox-content.is-wide .lightbox-img-wrap {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.lightbox-content.is-wide .lightbox-details {
+  padding: 24px 28px 28px;
 }
 
 .lightbox-details {
@@ -622,6 +680,13 @@ input:focus-visible {
     margin-top: 28px !important;
   }
 
+  .look-play {
+    width: 24px;
+    height: 24px;
+    right: 8px;
+    bottom: 6px;
+  }
+
   .look-img {
     aspect-ratio: 3 / 4.1 !important;
     border-radius: 6px;
@@ -676,6 +741,10 @@ input:focus-visible {
 
   .lightbox-details {
     padding: 0 24px 24px;
+  }
+
+  .lightbox-img-wrap.is-embed {
+    height: min(68vh, 560px);
   }
 }
 

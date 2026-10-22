@@ -321,60 +321,165 @@
     document.documentElement.removeAttribute('data-theme');
   } catch (e) {}
 
-  // --- Lookbook Lightbox Modal ---
+  // --- Performance Gallery Lightbox ---
   const LOOKS_DATA = [
     {
-      era: 'Era I',
-      name: 'Red Room',
-      img: './assets/ee3bb94a7d9be7c583a296c5b7cf267e.jpg',
-      alt: 'Portrait in a red suit against a burnt-orange backdrop',
-      desc: 'Shot in a soundproof isolation booth at 2 AM. The saturated crimson and burnt amber tones reflect the raw intensity of the first vocal takes for Static Hearts.',
-      credits: 'Photography: Elena Rostova · Wardrobe: Studio Ray'
+      "img": "./assets/performances/01-toyota-phoenix-citadel.jpg",
+      "alt": "Pyro flames in front of the Toyota sign at the Phoenix Citadel corporate show",
+      "title": "Toyota Corporate Event",
+      "venue": "Phoenix Citadel, Indore",
+      "desc": "Rock, Bollywood anthems and metal vibes",
+      "pos": "50% 50%",
+      "link": "https://www.instagram.com/namanmusica/reel/DaPiFmSzmoD/",
+      "embed": "DaPiFmSzmoD",
+      "kind": "instagram",
+      "cta": "Watch on Instagram"
     },
     {
-      era: 'Era II',
-      name: 'Golden Hour',
-      img: './assets/08161b9127ec885bb45ec3b1c3272d34.jpg',
-      alt: 'Seated figure in a knit sweater under a warm streak of light',
-      desc: 'The quiet acoustic side of the record. Warm late-afternoon natural rays piercing through dusty studio blinds in suburban London.',
-      credits: 'Photography: Marcus Thorne · Styling: Anna Vance'
+      "img": "./assets/performances/02-prestige-college-indore.jpg",
+      "alt": "The band posing on a red carpet of confetti in front of a huge college crowd at night",
+      "title": "Prestige College Fest",
+      "venue": "Prestige College, Indore",
+      "desc": "Strangers become one crowd, every song becomes an anthem",
+      "pos": "50% 0%",
+      "link": "https://www.instagram.com/namanmusica/reel/DaNJBH0zzKJ/",
+      "embed": "DaNJBH0zzKJ",
+      "kind": "instagram",
+      "cta": "Watch on Instagram"
     },
     {
-      era: 'Era III',
-      name: 'Wild Card',
-      img: './assets/d34af629590d4a20eb3c1b494fee5d5f.jpg',
-      alt: 'Close-up portrait in a leopard-print coat against deep red',
-      desc: 'Reckless overdrive, analog fuzz pedals, and late-night defiance. The aesthetic cornerstone for the mid-tempo rocker "Neon Prayer".',
-      credits: 'Photography: Elena Rostova · Make-up: K. Tanaka'
+      "img": "./assets/performances/03-tu-meri-college-concert.jpg",
+      "alt": "Vocalist singing into the mic above a cheering college crowd under purple lights",
+      "title": "College Concert: Tu Meri",
+      "venue": "Live",
+      "desc": "Thousands of hearts singing the same lyrics together",
+      "pos": "50% 100%",
+      "link": "https://www.instagram.com/namanmusica/reel/DancShJzipk/",
+      "embed": "DancShJzipk",
+      "kind": "instagram",
+      "cta": "Watch on Instagram"
     },
     {
-      era: 'Era IV',
-      name: 'After Dark',
-      img: './assets/9c9f4bd0bfcb051273f6768d2afbb263.jpg',
-      alt: 'Figure in a dark coat and red trousers seated against grey',
-      desc: 'Sleek, minimalist, and reflective. Captured on an empty soundstage hours before the winter tour announcement.',
-      credits: 'Creative Direction: Naman Musica & Marcus Thorne'
+      "img": "./assets/performances/04-ies-university-bhopal.jpg",
+      "alt": "Naman on stage in a white mesh vest under a cloud of stage smoke at IES University",
+      "title": "IES University Fest",
+      "venue": "IES University, Bhopal",
+      "desc": "One stage. Thousands of voices.",
+      "pos": "50% 50%",
+      "link": "https://www.instagram.com/namanmusica/reel/DdjHwbCzo3E/",
+      "embed": "DdjHwbCzo3E",
+      "kind": "instagram",
+      "cta": "Watch on Instagram"
+    },
+    {
+      "img": "./assets/performances/05-flute-college-fest.jpg",
+      "alt": "Close-up of the live flute performance on stage",
+      "title": "Live Flute Moment",
+      "venue": "Live",
+      "desc": "A single flute melody is enough to change the entire atmosphere",
+      "pos": "50% 0%",
+      "link": "https://www.instagram.com/namanmusica/reel/DafFkBpIx8N/",
+      "embed": "DafFkBpIx8N",
+      "kind": "instagram",
+      "cta": "Watch on Instagram"
+    },
+    {
+      "img": "./assets/performances/06-college-show-live.jpg",
+      "alt": "Vocalist in a bright headband mid-song at a college show",
+      "title": "College Show",
+      "venue": "Live",
+      "desc": "One stage. One crowd. Infinite memories.",
+      "pos": "50% 50%",
+      "link": "https://www.instagram.com/namanmusica/reel/DaCdXB8uSXk/",
+      "embed": "DaCdXB8uSXk",
+      "kind": "instagram",
+      "cta": "Watch on Instagram"
+    },
+    {
+      "img": "./assets/performances/07-live-stage-indore-jul.jpg",
+      "alt": "Vocalist silhouetted on a dark stage during a live show in Indore",
+      "title": "Live on Stage",
+      "venue": "Indore, India",
+      "desc": "It remembers how you made people feel",
+      "pos": "50% 40%",
+      "link": "https://www.instagram.com/namanmusica/p/Da0DSKPk75L/",
+      "embed": null,
+      "kind": "instagram",
+      "cta": "View on Instagram"
+    },
+    {
+      "img": "./assets/performances/08-live-stage-indore-aug.jpg",
+      "alt": "Vocalist silhouetted in blue smoke just before the first note",
+      "title": "Before the First Note",
+      "venue": "Indore, India",
+      "desc": "This is what peace looks like before the first note",
+      "pos": "50% 40%",
+      "link": "https://www.instagram.com/namanmusica/p/Dbfwh3uo_uQ/",
+      "embed": null,
+      "kind": "instagram",
+      "cta": "View on Instagram"
+    },
+    {
+      "img": "",
+      "alt": "",
+      "title": "Chal Do",
+      "venue": "Official video",
+      "desc": "Our original, on YouTube.",
+      "pos": "50% 50%",
+      "link": "https://youtu.be/oRBU7SwaIuc",
+      "embed": "oRBU7SwaIuc",
+      "kind": "youtube",
+      "cta": "Watch on YouTube"
     }
   ];
 
   const lightbox = document.getElementById('lookbook-lightbox');
+  const lightboxContent = lightbox ? lightbox.querySelector('.lightbox-content') : null;
+  const lightboxMedia = document.getElementById('lightbox-media');
   const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxFrame = document.getElementById('lightbox-frame');
   const lightboxEra = document.getElementById('lightbox-era');
   const lightboxTitle = document.getElementById('lightbox-title');
   const lightboxDesc = document.getElementById('lightbox-desc');
-  const lightboxCredits = document.getElementById('lightbox-credits');
+  const lightboxLink = document.getElementById('lightbox-link');
   const lightboxClose = document.getElementById('lightbox-close');
+
+  function embedUrl(data) {
+    if (data.kind === 'youtube') {
+      return `https://www.youtube-nocookie.com/embed/${data.embed}?autoplay=1&rel=0`;
+    }
+    if (data.embed) return `https://www.instagram.com/reel/${data.embed}/embed/`;
+    return '';
+  }
 
   function openLightbox(idx) {
     const data = LOOKS_DATA[idx];
     if (!data || !lightbox) return;
 
-    lightboxImg.src = data.img;
-    lightboxImg.alt = data.alt;
-    lightboxEra.textContent = data.era;
-    lightboxTitle.textContent = data.name;
+    const src = embedUrl(data);
+    const isYoutube = data.kind === 'youtube';
+
+    lightboxMedia.classList.toggle('is-embed', !!src && !isYoutube);
+    lightboxContent.classList.toggle('is-wide', isYoutube);
+
+    if (src) {
+      lightboxImg.style.display = 'none';
+      lightboxFrame.style.display = 'block';
+      lightboxFrame.src = src;
+    } else {
+      lightboxFrame.style.display = 'none';
+      lightboxFrame.removeAttribute('src');
+      lightboxImg.style.display = 'block';
+      lightboxImg.src = data.img;
+      lightboxImg.alt = data.alt;
+      lightboxImg.style.objectPosition = data.pos;
+    }
+
+    lightboxEra.textContent = data.venue;
+    lightboxTitle.textContent = data.title;
     lightboxDesc.textContent = data.desc;
-    lightboxCredits.textContent = data.credits;
+    lightboxLink.href = data.link;
+    lightboxLink.textContent = data.cta + ' ↗';
 
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -384,9 +489,13 @@
     if (!lightbox) return;
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
+    // blank the iframe so playback stops
+    lightboxFrame.removeAttribute('src');
   }
 
-  document.querySelectorAll('.look-notch-btn, .look-card').forEach((el) => {
+  window.openLook = openLightbox;
+
+  document.querySelectorAll('.look-notch-btn, .look-img').forEach((el) => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       const lookIdx = parseInt(el.getAttribute('data-look-index') || '0', 10);
