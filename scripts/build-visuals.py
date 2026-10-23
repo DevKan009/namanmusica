@@ -381,7 +381,8 @@ def page(sh, items, slug, name, blurb):
        ====================================================================== -->
   {LIGHTBOX}
 
-  <script src="../../main.js?v=24"></script>
+  <script src="../../lead.js?v=1"></script>
+  <script src="../../main.js?v=26"></script>
 </body>
 
 </html>

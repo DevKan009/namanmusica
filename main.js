@@ -446,16 +446,39 @@
   const joinSuccess = document.getElementById('join-success');
 
   if (joinForm && joinSuccess) {
+    // honeypot: real visitors never see or tick this
+    const trap = document.createElement('input');
+    trap.type = 'checkbox';
+    trap.name = 'botcheck';
+    trap.tabIndex = -1;
+    trap.setAttribute('aria-hidden', 'true');
+    trap.style.display = 'none';
+    joinForm.appendChild(trap);
+
     joinForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const emailInput = document.getElementById('join-email');
-      const email = emailInput ? emailInput.value : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      if (!email) return;
 
-      if (email) {
-        joinForm.style.display = 'none';
-        joinSuccess.style.display = 'block';
-        showToast(`Thank you! We'll get in touch with ${email} shortly.`);
-      }
+      const btn = joinForm.querySelector('button[type="submit"]');
+      const label = btn ? btn.innerHTML : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+      const done = (ok) => {
+        if (ok) {
+          joinForm.style.display = 'none';
+          joinSuccess.style.display = 'block';
+          showToast(`Thank you! We'll get in touch with ${email} shortly.`);
+        } else {
+          if (btn) { btn.disabled = false; btn.innerHTML = label; }
+          showToast('Could not send just now. Please email namanmusica@gmail.com');
+        }
+      };
+
+      if (trap.checked) { done(true); return; }   // bot: pretend it worked
+      if (!window.sendLead) { done(false); return; }
+      window.sendLead('Date check request: ' + email, { email: email, source: 'footer form' }).then(done);
     });
   }
 

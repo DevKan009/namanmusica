@@ -1228,10 +1228,10 @@ input:focus-visible {
 .book-stats {
   list-style: none;
   margin: clamp(40px, 5vw, 64px) 0;
-  padding: 28px 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
   border-top: 1px solid rgba(243, 238, 232, 0.16);
   border-bottom: 1px solid rgba(243, 238, 232, 0.16);
 }
@@ -1239,11 +1239,22 @@ input:focus-visible {
 .book-stats li {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
+  padding: clamp(24px, 3vw, 36px) clamp(20px, 3vw, 40px);
+  border-left: 1px solid rgba(243, 238, 232, 0.12);
+}
+
+.book-stats li:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.book-stats li:last-child {
+  padding-right: 0;
 }
 
 .book-stats .x {
-  font-size: clamp(28px, 3.8vw, 52px);
+  font-size: clamp(26px, 3.2vw, 44px);
   font-weight: 900;
   line-height: 1;
   white-space: nowrap;
@@ -1255,6 +1266,7 @@ input:focus-visible {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.18em;
+  line-height: 1.5;
   text-transform: uppercase;
   color: #A39C94;
 }
@@ -1503,7 +1515,17 @@ input:focus-visible {
 @media (max-width: 600px) {
   .book-stats {
     grid-template-columns: 1fr;
-    gap: 18px;
+  }
+
+  .book-stats li,
+  .book-stats li:first-child,
+  .book-stats li:last-child {
+    padding: 20px 0;
+    border-left: 0;
+  }
+
+  .book-stats li + li {
+    border-top: 1px solid rgba(243, 238, 232, 0.12);
   }
 
   .book-whys,
@@ -1550,96 +1572,113 @@ input:focus-visible {
   max-width: 680px;
 }
 
-.contact-grid {
+.reach {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(16px, 2.5vw, 28px);
-  margin-bottom: clamp(48px, 7vw, 80px);
+  gap: 14px;
+  margin-bottom: 14px;
 }
 
-.contact-card {
-  position: relative;
+.reach-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px 6px 6px;
   background: rgba(23, 21, 19, 0.72);
   border: 1px solid rgba(243, 238, 232, 0.12);
-  border-radius: 20px;
-  padding: clamp(24px, 3vw, 36px) clamp(20px, 2.5vw, 30px);
+  border-radius: 18px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.reach-item:hover {
+  border-color: rgba(179, 31, 18, 0.6);
+  background: rgba(33, 29, 26, 0.85);
+}
+
+.reach-item--main {
+  border-color: rgba(179, 31, 18, 0.55);
+}
+
+.reach-link {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px;
+  color: #F3EEE8;
+  text-decoration: none;
+}
+
+.reach-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(243, 238, 232, 0.07);
+  border: 1px solid rgba(243, 238, 232, 0.14);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.reach-item--main .reach-icon,
+.reach-item:hover .reach-icon {
+  background: var(--accent, #b31f12);
+  border-color: var(--accent, #b31f12);
+}
+
+.reach-text {
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: transform 0.25s var(--ease-spring), border-color 0.25s ease, box-shadow 0.25s ease;
+  gap: 4px;
 }
 
-.contact-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(179, 31, 18, 0.55);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.55);
-}
-
-.contact-card-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.reach-label {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent, #b31f12);
+  color: #A39C94;
 }
 
-.contact-card-badge::before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent, #b31f12);
-  box-shadow: 0 0 10px var(--accent, #b31f12);
+.reach-val {
+  font-size: clamp(15px, 1.5vw, 19px);
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.contact-card-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: rgba(243, 238, 232, 0.06);
-  border: 1px solid rgba(243, 238, 232, 0.14);
+.reach-copy {
+  flex: none;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(243, 238, 232, 0.2);
+  color: #CFC7BE;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.reach-copy:hover {
+  background: rgba(243, 238, 232, 0.1);
+  border-color: rgba(243, 238, 232, 0.5);
   color: #F3EEE8;
-  transition: background 0.2s, border-color 0.2s;
 }
 
-.contact-card:hover .contact-card-icon {
-  background: var(--accent, #b31f12);
-  border-color: var(--accent, #b31f12);
-  color: #0B0A09;
-}
-
-.contact-card-val {
-  font-size: clamp(20px, 2.2vw, 24px);
-  font-weight: 800;
-  color: #F3EEE8;
-  line-height: 1.2;
-  text-decoration: none;
-  word-break: break-word;
-}
-
-.contact-card-desc {
-  font-size: 14px;
-  line-height: 1.55;
+.reach-note {
+  margin: 0 0 clamp(48px, 7vw, 80px);
+  font-size: 12px;
+  letter-spacing: 0.08em;
   color: #A39C94;
-  margin: 0;
-  flex: 1;
-}
-
-.contact-card-actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding-top: 10px;
-  border-top: 1px solid rgba(243, 238, 232, 0.1);
 }
 
 .contact-btn {
@@ -1837,7 +1876,7 @@ input:focus-visible {
 }
 
 @media (max-width: 900px) {
-  .contact-grid {
+  .reach {
     grid-template-columns: 1fr;
   }
 
