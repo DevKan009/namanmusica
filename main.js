@@ -14,7 +14,7 @@
     { title: 'Sirf Tu', id: 'ntqEtl9u8Co' },
     { title: 'Chal Do', id: 'oRBU7SwaIuc' }
   ];
-  const PLAYLIST_URL = 'https://youtube.com/playlist?list=PLB8-MHxZ_7LJqcqdnSDEwsyOa7GxNf50k&si=hl3EfZDD92o2MVPM';
+  const PLAYLIST_URL = 'https://www.youtube.com/@Namanmusicaa';
 
   let ytPlayer = null;
   let ytReady = false;
@@ -29,6 +29,9 @@
   const trackButtons = document.querySelectorAll('.track-row-btn');
   const playerNowTitle = document.getElementById('player-title');
   const musicSection = document.getElementById('music');
+  const sleeveTitle = document.getElementById('sleeve-title');
+  const sleeveArt = document.querySelector('.sleeve-art');
+  const sleeveImgs = document.querySelectorAll('.sleeve-img');
 
   function formatTime(seconds) {
     const mins = Math.floor(seconds / 60);
@@ -39,6 +42,9 @@
   function updatePlayerUI(elapsed, total) {
     const track = TRACKS[currentTrackIdx];
     if (playerNowTitle) playerNowTitle.textContent = track.title;
+    if (sleeveTitle) sleeveTitle.textContent = track.title;
+    sleeveImgs.forEach((img, idx) => img.classList.toggle('is-active', idx === currentTrackIdx));
+    if (sleeveArt) sleeveArt.classList.toggle('is-playing', isPlaying);
 
     if (vinylWrap && vinylDisc) {
       vinylWrap.classList.toggle('on', isPlaying);
@@ -193,7 +199,7 @@
       }
     }, { rootMargin: '400px 0px' });
     io.observe(musicSection);
-  } else {
+  } else if (musicSection) {
     loadApi();
   }
 
@@ -256,116 +262,21 @@
   } catch (e) {}
 
   // --- Performance Gallery Lightbox ---
-  const LOOKS_DATA = [
-    {
-      "img": "./assets/performances/01-toyota-phoenix-citadel.jpg",
-      "alt": "Pyro flames in front of the Toyota sign at the Phoenix Citadel corporate show",
-      "title": "Toyota Corporate Event",
-      "venue": "Phoenix Citadel, Indore",
-      "desc": "Rock, Bollywood anthems and metal vibes",
-      "pos": "50% 50%",
-      "link": "https://www.instagram.com/namanmusica/reel/DaPiFmSzmoD/",
-      "embed": "DaPiFmSzmoD",
-      "kind": "instagram",
-      "cta": "Watch on Instagram"
-    },
-    {
-      "img": "./assets/performances/02-prestige-college-indore.jpg",
-      "alt": "The band posing on a red carpet of confetti in front of a huge college crowd at night",
-      "title": "Prestige College Fest",
-      "venue": "Prestige College, Indore",
-      "desc": "Strangers become one crowd, every song becomes an anthem",
-      "pos": "50% 0%",
-      "link": "https://www.instagram.com/namanmusica/reel/DaNJBH0zzKJ/",
-      "embed": "DaNJBH0zzKJ",
-      "kind": "instagram",
-      "cta": "Watch on Instagram"
-    },
-    {
-      "img": "./assets/performances/03-tu-meri-college-concert.jpg",
-      "alt": "Vocalist singing into the mic above a cheering college crowd under purple lights",
-      "title": "College Concert: Tu Meri",
-      "venue": "Live",
-      "desc": "Thousands of hearts singing the same lyrics together",
-      "pos": "50% 100%",
-      "link": "https://www.instagram.com/namanmusica/reel/DancShJzipk/",
-      "embed": "DancShJzipk",
-      "kind": "instagram",
-      "cta": "Watch on Instagram"
-    },
-    {
-      "img": "./assets/performances/04-ies-university-bhopal.jpg",
-      "alt": "Naman on stage in a white mesh vest under a cloud of stage smoke at IES University",
-      "title": "IES University Fest",
-      "venue": "IES University, Bhopal",
-      "desc": "One stage. Thousands of voices.",
-      "pos": "50% 50%",
-      "link": "https://www.instagram.com/namanmusica/reel/DdjHwbCzo3E/",
-      "embed": "DdjHwbCzo3E",
-      "kind": "instagram",
-      "cta": "Watch on Instagram"
-    },
-    {
-      "img": "./assets/performances/05-flute-college-fest.jpg",
-      "alt": "Close-up of the live flute performance on stage",
-      "title": "Live Flute Moment",
-      "venue": "Live",
-      "desc": "A single flute melody is enough to change the entire atmosphere",
-      "pos": "50% 0%",
-      "link": "https://www.instagram.com/namanmusica/reel/DafFkBpIx8N/",
-      "embed": "DafFkBpIx8N",
-      "kind": "instagram",
-      "cta": "Watch on Instagram"
-    },
-    {
-      "img": "./assets/performances/06-college-show-live.jpg",
-      "alt": "Vocalist in a bright headband mid-song at a college show",
-      "title": "College Show",
-      "venue": "Live",
-      "desc": "One stage. One crowd. Infinite memories.",
-      "pos": "50% 50%",
-      "link": "https://www.instagram.com/namanmusica/reel/DaCdXB8uSXk/",
-      "embed": "DaCdXB8uSXk",
-      "kind": "instagram",
-      "cta": "Watch on Instagram"
-    },
-    {
-      "img": "./assets/performances/07-live-stage-indore-jul.jpg",
-      "alt": "Vocalist silhouetted on a dark stage during a live show in Indore",
-      "title": "Live on Stage",
-      "venue": "Indore, India",
-      "desc": "It remembers how you made people feel",
-      "pos": "50% 40%",
-      "link": "https://www.instagram.com/namanmusica/p/Da0DSKPk75L/",
-      "embed": null,
-      "kind": "instagram",
-      "cta": "View on Instagram"
-    },
-    {
-      "img": "./assets/performances/08-live-stage-indore-aug.jpg",
-      "alt": "Vocalist silhouetted in blue smoke just before the first note",
-      "title": "Before the First Note",
-      "venue": "Indore, India",
-      "desc": "This is what peace looks like before the first note",
-      "pos": "50% 40%",
-      "link": "https://www.instagram.com/namanmusica/p/Dbfwh3uo_uQ/",
-      "embed": null,
-      "kind": "instagram",
-      "cta": "View on Instagram"
-    },
-    {
-      "img": "",
-      "alt": "",
-      "title": "NAMANMUSICA on YouTube",
-      "venue": "Playlist",
-      "desc": "Watch the band live and our originals on YouTube.",
-      "pos": "50% 50%",
-      "link": "https://youtube.com/playlist?list=PLB8-MHxZ_7LJqcqdnSDEwsyOa7GxNf50k&si=hl3EfZDD92o2MVPM",
-      "embed": "PLB8-MHxZ_7LJqcqdnSDEwsyOa7GxNf50k",
-      "kind": "youtube",
-      "cta": "Watch on YouTube"
-    }
-  ];
+  // Items come from the gallery cards on the page (data-* attributes), so each
+  // visuals page carries its own set.
+  const LOOKS_DATA = Array.from(document.querySelectorAll('.look[data-title]')).map((el) => ({
+    img: el.dataset.img || '',
+    alt: el.dataset.alt || '',
+    title: el.dataset.title || '',
+    venue: el.dataset.venue || '',
+    desc: el.dataset.desc || '',
+    pos: el.dataset.pos || '50% 50%',
+    link: el.dataset.link || '#',
+    embed: el.dataset.embed || '',
+    video: el.dataset.video || '',
+    kind: el.dataset.kind || 'instagram',
+    cta: el.dataset.cta || 'Watch'
+  }));
 
   const lightbox = document.getElementById('lookbook-lightbox');
   const lightboxContent = lightbox ? lightbox.querySelector('.lightbox-content') : null;
@@ -379,28 +290,62 @@
   const lightboxClose = document.getElementById('lightbox-close');
 
   function embedUrl(data) {
-    if (data.kind === 'youtube') {
-      return `https://www.youtube-nocookie.com/embed/videoseries?list=${data.embed}&autoplay=1&rel=0`;
+    if (data.kind === 'youtube' && data.embed) {
+      return data.embed.length === 11
+        ? `https://www.youtube-nocookie.com/embed/${data.embed}?autoplay=1&playsinline=1&rel=0`
+        : `https://www.youtube-nocookie.com/embed/videoseries?list=${data.embed}&autoplay=1&playsinline=1&rel=0`;
     }
     if (data.embed) return `https://www.instagram.com/reel/${data.embed}/embed/`;
     return '';
+  }
+
+  // Self-hosted clip: the only way to get real in-page autoplay with sound
+  // (Instagram's embed can't be autoplayed, and its play button leaves the page).
+  let lightboxVideo = null;
+  function stopVideo() {
+    if (!lightboxVideo) return;
+    lightboxVideo.pause();
+    lightboxVideo.removeAttribute('src');
+    lightboxVideo.load();
+    lightboxVideo.style.display = 'none';
   }
 
   function openLightbox(idx) {
     const data = LOOKS_DATA[idx];
     if (!data || !lightbox) return;
 
-    const src = embedUrl(data);
-    const isYoutube = data.kind === 'youtube';
+    const src = data.video ? '' : embedUrl(data);
+    const isYoutube = data.kind === 'youtube' && !data.video;
 
-    lightboxMedia.classList.toggle('is-embed', !!src && !isYoutube);
+    lightboxMedia.classList.toggle('is-embed', (!!src && !isYoutube) || !!data.video);
     lightboxContent.classList.toggle('is-wide', isYoutube);
 
-    if (src) {
+    if (data.video) {
+      if (!lightboxVideo) {
+        lightboxVideo = document.createElement('video');
+        lightboxVideo.setAttribute('playsinline', '');
+        lightboxVideo.controls = true;
+        lightboxVideo.loop = true;
+        lightboxVideo.preload = 'auto';
+        lightboxMedia.appendChild(lightboxVideo);
+      }
+      lightboxImg.style.display = 'none';
+      lightboxFrame.style.display = 'none';
+      lightboxFrame.removeAttribute('src');
+      lightboxVideo.poster = data.img;
+      lightboxVideo.src = data.video;
+      lightboxVideo.style.display = 'block';
+      lightboxVideo.muted = false;
+      // the card click is the user gesture that lets this start with sound
+      const started = lightboxVideo.play();
+      if (started && started.catch) started.catch(() => {});
+    } else if (src) {
+      stopVideo();
       lightboxImg.style.display = 'none';
       lightboxFrame.style.display = 'block';
       lightboxFrame.src = src;
     } else {
+      stopVideo();
       lightboxFrame.style.display = 'none';
       lightboxFrame.removeAttribute('src');
       lightboxImg.style.display = 'block';
@@ -423,11 +368,11 @@
     if (!lightbox) return;
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
-    // blank the iframe so playback stops
+    // blank the iframe / video so playback stops
     lightboxFrame.removeAttribute('src');
+    stopVideo();
   }
 
-  window.openLook = openLightbox;
 
   document.querySelectorAll('.look-notch-btn, .look-img').forEach((el) => {
     el.addEventListener('click', (e) => {
@@ -509,7 +454,7 @@
       if (email) {
         joinForm.style.display = 'none';
         joinSuccess.style.display = 'block';
-        showToast(`You're subscribed with ${email}!`);
+        showToast(`Thank you! We'll get in touch with ${email} shortly.`);
       }
     });
   }
