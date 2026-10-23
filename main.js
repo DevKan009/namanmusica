@@ -6,264 +6,198 @@
 (function () {
   'use strict';
 
-  // --- Tracklist & Player State ---
+  // --- Originals Player ---
+  // Playback runs through the official YouTube IFrame API, so every play is a
+  // normal embedded YouTube view. The tracklist and vinyl disc just mirror it.
   const TRACKS = [
-    { title: 'Static Hearts', len: '3:42', totalSec: 222, chordFreqs: [220, 261.63, 329.63, 392.00] }, // Am7
-    { title: 'Last Train Home', len: '4:05', totalSec: 245, chordFreqs: [174.61, 220, 261.63, 329.63] }, // Fmaj7
-    { title: 'Neon Prayer', len: '3:18', totalSec: 198, chordFreqs: [196.00, 246.94, 293.66, 369.99] }, // Gmaj7
-    { title: 'Paper Crowns', len: '3:57', totalSec: 237, chordFreqs: [164.81, 196.00, 246.94, 293.66] }, // Em7
-    { title: 'Slow Burn', len: '5:10', totalSec: 310, chordFreqs: [146.83, 174.61, 220, 261.63] }   // Dm7
+    { title: 'Illusion', id: 'R2axwAMikR0' },
+    { title: 'Sirf Tu', id: 'ntqEtl9u8Co' },
+    { title: 'Chal Do', id: 'oRBU7SwaIuc' }
   ];
+  const PLAYLIST_URL = 'https://youtube.com/playlist?list=PLB8-MHxZ_7LJqcqdnSDEwsyOa7GxNf50k&si=hl3EfZDD92o2MVPM';
 
+  let ytPlayer = null;
+  let ytReady = false;
+  let apiState = 'idle'; // idle | loading | ready | failed
+  let queuedIdx = null;
   let currentTrackIdx = 0;
   let isPlaying = false;
-  let currentElapsedSec = 0;
-  let playbackInterval = null;
+  let tickTimer = null;
 
-  // --- Web Audio Generative Synth (Dreamy Indie/Lo-Fi Ambience) ---
-  let audioCtx = null;
-  let synthGain = null;
-  let activeNodes = [];
+  const vinylDisc = document.getElementById('vinyl-disc');
+  const vinylWrap = document.getElementById('vinyl-wrap');
+  const trackButtons = document.querySelectorAll('.track-row-btn');
+  const playerNowTitle = document.getElementById('player-title');
+  const musicSection = document.getElementById('music');
 
-  function initAudio() {
-    if (audioCtx) return;
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContextClass) return;
-    audioCtx = new AudioContextClass();
-
-    synthGain = audioCtx.createGain();
-    synthGain.gain.setValueAtTime(0, audioCtx.currentTime);
-
-    // Warm master filter
-    const lowpass = audioCtx.createBiquadFilter();
-    lowpass.type = 'lowpass';
-    lowpass.frequency.setValueAtTime(1400, audioCtx.currentTime);
-    lowpass.Q.setValueAtTime(1.2, audioCtx.currentTime);
-
-    // Subtle vinyl warmth / stereo panner
-    synthGain.connect(lowpass);
-    lowpass.connect(audioCtx.destination);
-  }
-
-  function startSynthSound() {
-    initAudio();
-    if (!audioCtx) return;
-    if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-
-    stopSynthSound();
-
-    const now = audioCtx.currentTime;
-    synthGain.gain.cancelScheduledValues(now);
-    synthGain.gain.setValueAtTime(0.001, now);
-    synthGain.gain.linearRampToValueAtTime(0.16, now + 1.2);
-
-    const track = TRACKS[currentTrackIdx];
-    const freqs = track.chordFreqs || [220, 261.63, 329.63, 392.00];
-
-    // Create 4 warm oscillator voices for dreamy indie pad
-    freqs.forEach((freq, idx) => {
-      const osc = audioCtx.createOscillator();
-      const voiceGain = audioCtx.createGain();
-
-      osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
-      osc.frequency.setValueAtTime(freq, now);
-
-      // Subtle warm detune / chorus
-      const detuneCents = (idx - 1.5) * 7;
-      osc.detune.setValueAtTime(detuneCents, now);
-
-      // Subtle LFO modulation
-      const lfo = audioCtx.createOscillator();
-      const lfoGain = audioCtx.createGain();
-      lfo.frequency.setValueAtTime(0.3 + idx * 0.1, now);
-      lfoGain.gain.setValueAtTime(1.8, now);
-      lfo.connect(osc.frequency);
-      lfo.start(now);
-
-      voiceGain.gain.setValueAtTime(0.25, now);
-      osc.connect(voiceGain);
-      voiceGain.connect(synthGain);
-
-      osc.start(now);
-      activeNodes.push(osc, lfo, voiceGain, lfoGain);
-    });
-  }
-
-  function stopSynthSound() {
-    if (!audioCtx || !synthGain) return;
-    const now = audioCtx.currentTime;
-    synthGain.gain.cancelScheduledValues(now);
-    synthGain.gain.linearRampToValueAtTime(0.001, now + 0.6);
-
-    setTimeout(() => {
-      activeNodes.forEach(node => {
-        try {
-          if (node.stop) node.stop();
-          if (node.disconnect) node.disconnect();
-        } catch (e) {}
-      });
-      activeNodes = [];
-    }, 700);
-  }
-
-  // --- Format Time ---
   function formatTime(seconds) {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   }
 
-  // --- DOM Elements ---
-  const heroPlayBtn = document.getElementById('hero-play-btn');
-  const heroPlayIcon = document.getElementById('hero-play-icon');
-  const heroPauseIcon = document.getElementById('hero-pause-icon');
-  const playerStatusLabel = document.getElementById('player-status');
-  const playerNowTitle = document.getElementById('player-title');
-  const playerNowLen = document.getElementById('player-len');
-  const playerTimeCurrent = document.getElementById('player-time-current');
-  const playerProgBar = document.getElementById('player-prog-bar');
-  const heroEq = document.getElementById('hero-eq');
-  const vinylDisc = document.getElementById('vinyl-disc');
-  const vinylWrap = document.getElementById('vinyl-wrap');
-  const trackButtons = document.querySelectorAll('.track-row-btn');
-
-  // --- Update Player UI ---
-  function updatePlayerUI() {
+  function updatePlayerUI(elapsed, total) {
     const track = TRACKS[currentTrackIdx];
+    if (playerNowTitle) playerNowTitle.textContent = track.title;
 
-    // Status & Title
-    if (playerStatusLabel) {
-      playerStatusLabel.textContent = isPlaying ? 'Now playing' : 'Press play';
-    }
-    if (playerNowTitle) {
-      playerNowTitle.textContent = track.title;
-    }
-    if (playerNowLen) {
-      playerNowLen.textContent = track.len;
-    }
-
-    // Play/Pause Icons in Hero Player
-    if (heroPlayIcon && heroPauseIcon) {
-      if (isPlaying) {
-        heroPlayIcon.style.display = 'none';
-        heroPauseIcon.style.display = 'block';
-        if (heroPlayBtn) heroPlayBtn.setAttribute('aria-label', `Pause ${track.title}`);
-      } else {
-        heroPlayIcon.style.display = 'block';
-        heroPauseIcon.style.display = 'none';
-        if (heroPlayBtn) heroPlayBtn.setAttribute('aria-label', `Play ${track.title}`);
-      }
-    }
-
-    // Hero Equalizer
-    if (heroEq) {
-      if (isPlaying) {
-        heroEq.classList.add('on');
-      } else {
-        heroEq.classList.remove('on');
-      }
-    }
-
-    // Vinyl Disc Animation
     if (vinylWrap && vinylDisc) {
-      if (isPlaying) {
-        vinylWrap.classList.add('on');
-        vinylDisc.classList.add('on');
-      } else {
-        vinylWrap.classList.remove('on');
-        vinylDisc.classList.remove('on');
-      }
+      vinylWrap.classList.toggle('on', isPlaying);
+      vinylDisc.classList.toggle('on', isPlaying);
     }
 
-    // Tracklist updates
     trackButtons.forEach((btn, idx) => {
       const isCurrent = idx === currentTrackIdx;
       const numSpan = btn.querySelector('.track-num');
       const eqSpan = btn.querySelector('.track-eq');
+      const bar = btn.querySelector('.track-prog i');
 
       btn.setAttribute('aria-pressed', isCurrent && isPlaying ? 'true' : 'false');
-
-      if (isCurrent) {
-        btn.style.color = 'var(--accent)';
-        if (numSpan) numSpan.style.display = isPlaying ? 'none' : 'block';
-        if (eqSpan) eqSpan.style.display = isPlaying ? 'inline-flex' : 'none';
-      } else {
-        btn.style.color = '#F3EEE8';
-        if (numSpan) numSpan.style.display = 'block';
-        if (eqSpan) eqSpan.style.display = 'none';
+      btn.style.color = isCurrent ? 'var(--accent)' : '#F3EEE8';
+      if (numSpan) numSpan.style.display = isCurrent && isPlaying ? 'none' : 'block';
+      if (eqSpan) eqSpan.style.display = isCurrent && isPlaying ? 'inline-flex' : 'none';
+      if (bar) {
+        const pct = isCurrent && total ? (elapsed / total) * 100 : 0;
+        bar.style.width = `${Math.min(100, Math.max(0, pct))}%`;
       }
     });
+  }
 
-    // Time & Progress
-    if (playerTimeCurrent) {
-      playerTimeCurrent.textContent = formatTime(currentElapsedSec);
+  function readTime() {
+    if (!ytReady || !ytPlayer || !ytPlayer.getDuration) return;
+    const total = ytPlayer.getDuration() || 0;
+    const elapsed = ytPlayer.getCurrentTime() || 0;
+    if (total) {
+      const lenEl = trackButtons[currentTrackIdx] && trackButtons[currentTrackIdx].querySelector('.track-len');
+      if (lenEl) lenEl.textContent = formatTime(total);
     }
-    if (playerProgBar) {
-      const percentage = (currentElapsedSec / track.totalSec) * 100;
-      playerProgBar.style.width = `${Math.min(100, Math.max(0, percentage))}%`;
+    updatePlayerUI(elapsed, total);
+  }
+
+  function startTick() {
+    stopTick();
+    tickTimer = setInterval(readTime, 500);
+  }
+
+  function stopTick() {
+    if (tickTimer) {
+      clearInterval(tickTimer);
+      tickTimer = null;
     }
   }
 
-  function togglePlay() {
-    isPlaying = !isPlaying;
-    if (isPlaying) {
-      startSynthSound();
-      startProgressTimer();
-      showToast(`Now playing: ${TRACKS[currentTrackIdx].title}`);
-    } else {
-      stopSynthSound();
-      stopProgressTimer();
+  function onStateChange(e) {
+    const S = window.YT.PlayerState;
+    if (e.data === S.PLAYING) {
+      isPlaying = true;
+      startTick();
+    } else if (e.data === S.PAUSED) {
+      isPlaying = false;
+      stopTick();
+    } else if (e.data === S.ENDED) {
+      stopTick();
+      if (currentTrackIdx < TRACKS.length - 1) {
+        playTrack(currentTrackIdx + 1);
+        return;
+      }
+      isPlaying = false;
+      currentTrackIdx = 0;
+      ytPlayer.cueVideoById(TRACKS[0].id);
     }
-    updatePlayerUI();
+    if (ytReady) readTime();
+    else updatePlayerUI(0, 0);
+  }
+
+  function createPlayer() {
+    ytPlayer = new window.YT.Player('yt-player', {
+      width: '100%',
+      height: '100%',
+      videoId: TRACKS[currentTrackIdx].id,
+      playerVars: { playsinline: 1, rel: 0, modestbranding: 1 },
+      events: {
+        onReady: () => {
+          ytReady = true;
+          apiState = 'ready';
+          if (queuedIdx !== null) {
+            const idx = queuedIdx;
+            queuedIdx = null;
+            playTrack(idx);
+          }
+        },
+        onStateChange,
+        onError: () => {
+          isPlaying = false;
+          stopTick();
+          updatePlayerUI(0, 0);
+          showToast('This track could not load. Opening YouTube instead.');
+          window.open(PLAYLIST_URL, '_blank', 'noopener');
+        }
+      }
+    });
+  }
+
+  function loadApi() {
+    if (apiState !== 'idle') return;
+    apiState = 'loading';
+    if (window.YT && window.YT.Player) {
+      createPlayer();
+      return;
+    }
+    const prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      if (typeof prev === 'function') prev();
+      createPlayer();
+    };
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    tag.onerror = () => {
+      apiState = 'failed';
+    };
+    document.head.appendChild(tag);
+  }
+
+  function playTrack(idx) {
+    currentTrackIdx = idx;
+    if (apiState === 'failed') {
+      window.open(PLAYLIST_URL, '_blank', 'noopener');
+      return;
+    }
+    if (!ytReady) {
+      queuedIdx = idx;
+      loadApi();
+      updatePlayerUI(0, 0);
+      return;
+    }
+    ytPlayer.loadVideoById(TRACKS[idx].id);
+    updatePlayerUI(0, 0);
   }
 
   function selectTrack(idx) {
-    if (idx === currentTrackIdx) {
-      togglePlay();
+    if (idx === currentTrackIdx && ytReady) {
+      if (isPlaying) ytPlayer.pauseVideo();
+      else ytPlayer.playVideo();
       return;
     }
-    currentTrackIdx = idx;
-    currentElapsedSec = 0;
-    isPlaying = true;
-    startSynthSound();
-    startProgressTimer();
-    showToast(`Now playing: ${TRACKS[currentTrackIdx].title}`);
-    updatePlayerUI();
-  }
-
-  function startProgressTimer() {
-    stopProgressTimer();
-    playbackInterval = setInterval(() => {
-      const track = TRACKS[currentTrackIdx];
-      currentElapsedSec += 1;
-      if (currentElapsedSec > track.totalSec) {
-        // Next track
-        currentTrackIdx = (currentTrackIdx + 1) % TRACKS.length;
-        currentElapsedSec = 0;
-        startSynthSound();
-        showToast(`Next track: ${TRACKS[currentTrackIdx].title}`);
-      }
-      updatePlayerUI();
-    }, 1000);
-  }
-
-  function stopProgressTimer() {
-    if (playbackInterval) {
-      clearInterval(playbackInterval);
-      playbackInterval = null;
-    }
-  }
-
-  // --- Attach Player Listeners ---
-  if (heroPlayBtn) {
-    heroPlayBtn.addEventListener('click', togglePlay);
+    playTrack(idx);
   }
 
   trackButtons.forEach((btn, idx) => {
     btn.addEventListener('click', () => selectTrack(idx));
   });
+
+  // Warm up the player shortly before the section scrolls into view.
+  if (musicSection && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((en) => en.isIntersecting)) {
+        loadApi();
+        io.disconnect();
+      }
+    }, { rootMargin: '400px 0px' });
+    io.observe(musicSection);
+  } else {
+    loadApi();
+  }
+
+  updatePlayerUI(0, 0);
 
   // --- Mobile Menu Toggle ---
   const menuBtn = document.getElementById('menu-btn');
@@ -422,12 +356,12 @@
     {
       "img": "",
       "alt": "",
-      "title": "Chal Do",
-      "venue": "Official video",
-      "desc": "Our original, on YouTube.",
+      "title": "NAMANMUSICA on YouTube",
+      "venue": "Playlist",
+      "desc": "Watch the band live and our originals on YouTube.",
       "pos": "50% 50%",
-      "link": "https://youtu.be/oRBU7SwaIuc",
-      "embed": "oRBU7SwaIuc",
+      "link": "https://youtube.com/playlist?list=PLB8-MHxZ_7LJqcqdnSDEwsyOa7GxNf50k&si=hl3EfZDD92o2MVPM",
+      "embed": "PLB8-MHxZ_7LJqcqdnSDEwsyOa7GxNf50k",
       "kind": "youtube",
       "cta": "Watch on YouTube"
     }
@@ -446,7 +380,7 @@
 
   function embedUrl(data) {
     if (data.kind === 'youtube') {
-      return `https://www.youtube-nocookie.com/embed/${data.embed}?autoplay=1&rel=0`;
+      return `https://www.youtube-nocookie.com/embed/videoseries?list=${data.embed}&autoplay=1&rel=0`;
     }
     if (data.embed) return `https://www.instagram.com/reel/${data.embed}/embed/`;
     return '';
@@ -535,6 +469,29 @@
           emailInput.focus();
           showToast(`Selected city: ${city}. Enter your email to receive first access.`);
         }, 500);
+      }
+    });
+  });
+
+  // --- Book us tabs ---
+  const bookTabs = Array.from(document.querySelectorAll('.book-tab'));
+  function selectBookTab(tab, focus) {
+    bookTabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      const panel = document.getElementById(t.getAttribute('aria-controls'));
+      if (panel) panel.hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  bookTabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => selectBookTab(tab, false));
+    tab.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const dir = e.key === 'ArrowRight' ? 1 : -1;
+        selectBookTab(bookTabs[(i + dir + bookTabs.length) % bookTabs.length], true);
       }
     });
   });
